@@ -59,35 +59,37 @@ extern int yydebug;
     FDSK = 260,                    /* FDSK  */
     RUTA = 261,                    /* RUTA  */
     DDASH = 262,                   /* DDASH  */
-    PATH = 263,                    /* PATH  */
-    MB = 264,                      /* MB  */
-    KB = 265,                      /* KB  */
-    B = 266,                       /* B  */
-    UNIT = 267,                    /* UNIT  */
-    FFIT = 268,                    /* FFIT  */
-    BFIT = 269,                    /* BFIT  */
-    WFIT = 270,                    /* WFIT  */
-    FIT = 271,                     /* FIT  */
-    IGUAL = 272,                   /* IGUAL  */
-    SIZE = 273,                    /* SIZE  */
-    NAME = 274,                    /* NAME  */
-    ADD = 275,                     /* ADD  */
-    DELET = 276,                   /* DELET  */
-    TYPE = 277,                    /* TYPE  */
-    FULL = 278,                    /* FULL  */
-    FAST = 279,                    /* FAST  */
-    MBR = 280,                     /* MBR  */
-    DISK = 281,                    /* DISK  */
-    PRIMARY = 282,                 /* PRIMARY  */
-    EXTENDED = 283,                /* EXTENDED  */
-    LOGIC = 284,                   /* LOGIC  */
-    CADENA = 285,                  /* CADENA  */
-    ID = 286,                      /* ID  */
-    REP = 287,                     /* REP  */
-    EXEC = 288,                    /* EXEC  */
-    MOUNT = 289,                   /* MOUNT  */
-    UMOUNT = 290,                  /* UMOUNT  */
-    NUM = 291                      /* NUM  */
+    DDASHO = 263,                  /* DDASHO  */
+    DDOSPT = 264,                  /* DDOSPT  */
+    PATH = 265,                    /* PATH  */
+    MB = 266,                      /* MB  */
+    KB = 267,                      /* KB  */
+    B = 268,                       /* B  */
+    UNIT = 269,                    /* UNIT  */
+    FFIT = 270,                    /* FFIT  */
+    BFIT = 271,                    /* BFIT  */
+    WFIT = 272,                    /* WFIT  */
+    FIT = 273,                     /* FIT  */
+    IGUAL = 274,                   /* IGUAL  */
+    SIZE = 275,                    /* SIZE  */
+    NAME = 276,                    /* NAME  */
+    ADD = 277,                     /* ADD  */
+    DELET = 278,                   /* DELET  */
+    TYPE = 279,                    /* TYPE  */
+    FULL = 280,                    /* FULL  */
+    FAST = 281,                    /* FAST  */
+    MBR = 282,                     /* MBR  */
+    DISK = 283,                    /* DISK  */
+    PRIMARY = 284,                 /* PRIMARY  */
+    EXTENDED = 285,                /* EXTENDED  */
+    LOGIC = 286,                   /* LOGIC  */
+    CADENA = 287,                  /* CADENA  */
+    ID = 288,                      /* ID  */
+    REP = 289,                     /* REP  */
+    EXEC = 290,                    /* EXEC  */
+    MOUNT = 291,                   /* MOUNT  */
+    UMOUNT = 292,                  /* UMOUNT  */
+    NUM = 293                      /* NUM  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
@@ -96,7 +98,7 @@ extern int yydebug;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 69 "analizador/Parser.y"
+#line 71 "analizador/Parser.y"
 
     char* text;
     int value;
@@ -104,7 +106,7 @@ union YYSTYPE
     std::vector<PARAMETER*>* params;
     PARAM_TYPE pt;
 
-#line 108 "analizador/Parser.h"
+#line 110 "analizador/Parser.h"
 
 };
 typedef union YYSTYPE YYSTYPE;

@@ -22,6 +22,8 @@ void yyerror(COMMAND *command, const char *msg) { return; }
 %token <text>FDSK
 %token <text>RUTA
 %token <text>DDASH
+%token <text>DDASHO
+%token <text>DDOSPT
 %token <text>PATH
 %token <text>MB
 %token <text>KB
@@ -128,15 +130,19 @@ void yyerror(COMMAND *command, const char *msg) { return; }
         ;
     
     parameter
-        :DDASH PATH IGUAL path_string           { $$ = createParam(pPATH, $4, 0, tNONE); }
-        |DDASH UNIT IGUAL unit_size             { $$ = createParam(pUNIT, NULL, 0, $4); }
-        |DDASH FIT IGUAL fit_opt                { $$ = createParam(pFIT, NULL, 0, $4); }
-        |DDASH SIZE IGUAL NUM                   { $$ = createParam(pSIZE, NULL, $4, tNONE); }
-        |DDASH TYPE IGUAL part_type             { $$ = createParam(pTYPE, NULL, 0, $4); }
-        |DDASH ADD IGUAL val                    { $$ = createParam(pADD, NULL, $4, tNONE); }
-        |DDASH DELET IGUAL del_type             { $$ = createParam(pDELETE, NULL, 0, $4); }
-        |DDASH NAME IGUAL rep_type              { $$ = createParam(pNAME, NULL, 0, $4); }
-        |DDASH NAME IGUAL name_string           { $$ = createParam(pNAME, $4, 0, tNONE); }
+        :DDASH PATH separator path_string           { $$ = createParam(pPATH, $4, 0, tNONE); }
+        |DDASH UNIT separator unit_size             { $$ = createParam(pUNIT, NULL, 0, $4); }
+        |DDASH FIT separator fit_opt                { $$ = createParam(pFIT, NULL, 0, $4); }
+        |DDASH SIZE separator NUM                   { $$ = createParam(pSIZE, NULL, $4, tNONE); }
+        |DDASH TYPE separator part_type             { $$ = createParam(pTYPE, NULL, 0, $4); }
+        |DDASH ADD separator val                    { $$ = createParam(pADD, NULL, $4, tNONE); }
+        |DDASH DELET separator del_type             { $$ = createParam(pDELETE, NULL, 0, $4); }
+        |DDASH NAME separator rep_type              { $$ = createParam(pNAME, NULL, 0, $4); }
+        |DDASH NAME separator name_string           { $$ = createParam(pNAME, $4, 0, tNONE); }
+        ;
+
+    separator
+        : DDASHO DDOSPT DDASHO
         ;
     
     rep_type

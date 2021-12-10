@@ -5,9 +5,13 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <vector>
-#include <string>
 #include "Structs.h"
+#include "../headers/mkdisk.h"
+#include "../headers/rmdisk.h"
+#include "../headers/fdisk.h"
+#include "../headers/exec.h"
 #include "../headers/Structs.h"
+#include "../headers/rep.h"
 #include "../analizador/Parser.h"
 #include "../analizador/Lexer.h"
 using std::vector;
