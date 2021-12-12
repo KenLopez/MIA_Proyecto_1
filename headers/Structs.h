@@ -16,6 +16,8 @@ typedef enum tagCOMMAND_NAME
     cEXEC,
     cMOUNT,
     cUMOUNT,
+    cPAUSE,
+    cCOMMENT,
 } COMMAND_NAME;
 
 typedef enum tagPARAM_NAME{

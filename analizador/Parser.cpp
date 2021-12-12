@@ -116,38 +116,38 @@ enum yysymbol_kind_t
   YYSYMBOL_RMDSK = 4,                      /* RMDSK  */
   YYSYMBOL_FDSK = 5,                       /* FDSK  */
   YYSYMBOL_RUTA = 6,                       /* RUTA  */
-  YYSYMBOL_DDASH = 7,                      /* DDASH  */
-  YYSYMBOL_DDASHO = 8,                     /* DDASHO  */
-  YYSYMBOL_DDOSPT = 9,                     /* DDOSPT  */
-  YYSYMBOL_PATH = 10,                      /* PATH  */
-  YYSYMBOL_MB = 11,                        /* MB  */
-  YYSYMBOL_KB = 12,                        /* KB  */
-  YYSYMBOL_B = 13,                         /* B  */
-  YYSYMBOL_UNIT = 14,                      /* UNIT  */
-  YYSYMBOL_FFIT = 15,                      /* FFIT  */
-  YYSYMBOL_BFIT = 16,                      /* BFIT  */
-  YYSYMBOL_WFIT = 17,                      /* WFIT  */
-  YYSYMBOL_FIT = 18,                       /* FIT  */
-  YYSYMBOL_IGUAL = 19,                     /* IGUAL  */
-  YYSYMBOL_SIZE = 20,                      /* SIZE  */
-  YYSYMBOL_NAME = 21,                      /* NAME  */
-  YYSYMBOL_ADD = 22,                       /* ADD  */
-  YYSYMBOL_DELET = 23,                     /* DELET  */
-  YYSYMBOL_TYPE = 24,                      /* TYPE  */
-  YYSYMBOL_FULL = 25,                      /* FULL  */
-  YYSYMBOL_FAST = 26,                      /* FAST  */
-  YYSYMBOL_MBR = 27,                       /* MBR  */
-  YYSYMBOL_DISK = 28,                      /* DISK  */
-  YYSYMBOL_PRIMARY = 29,                   /* PRIMARY  */
-  YYSYMBOL_EXTENDED = 30,                  /* EXTENDED  */
-  YYSYMBOL_LOGIC = 31,                     /* LOGIC  */
-  YYSYMBOL_CADENA = 32,                    /* CADENA  */
-  YYSYMBOL_ID = 33,                        /* ID  */
-  YYSYMBOL_REP = 34,                       /* REP  */
-  YYSYMBOL_EXEC = 35,                      /* EXEC  */
-  YYSYMBOL_MOUNT = 36,                     /* MOUNT  */
-  YYSYMBOL_UMOUNT = 37,                    /* UMOUNT  */
-  YYSYMBOL_NUM = 38,                       /* NUM  */
+  YYSYMBOL_PATH = 7,                       /* PATH  */
+  YYSYMBOL_MB = 8,                         /* MB  */
+  YYSYMBOL_KB = 9,                         /* KB  */
+  YYSYMBOL_B = 10,                         /* B  */
+  YYSYMBOL_UNIT = 11,                      /* UNIT  */
+  YYSYMBOL_FFIT = 12,                      /* FFIT  */
+  YYSYMBOL_BFIT = 13,                      /* BFIT  */
+  YYSYMBOL_WFIT = 14,                      /* WFIT  */
+  YYSYMBOL_FIT = 15,                       /* FIT  */
+  YYSYMBOL_IGUAL = 16,                     /* IGUAL  */
+  YYSYMBOL_SIZE = 17,                      /* SIZE  */
+  YYSYMBOL_NAME = 18,                      /* NAME  */
+  YYSYMBOL_ADD = 19,                       /* ADD  */
+  YYSYMBOL_DELET = 20,                     /* DELET  */
+  YYSYMBOL_TYPE = 21,                      /* TYPE  */
+  YYSYMBOL_FULL = 22,                      /* FULL  */
+  YYSYMBOL_FAST = 23,                      /* FAST  */
+  YYSYMBOL_MBR = 24,                       /* MBR  */
+  YYSYMBOL_DISK = 25,                      /* DISK  */
+  YYSYMBOL_PRIMARY = 26,                   /* PRIMARY  */
+  YYSYMBOL_EXTENDED = 27,                  /* EXTENDED  */
+  YYSYMBOL_LOGIC = 28,                     /* LOGIC  */
+  YYSYMBOL_CADENA = 29,                    /* CADENA  */
+  YYSYMBOL_ID = 30,                        /* ID  */
+  YYSYMBOL_REP = 31,                       /* REP  */
+  YYSYMBOL_EXEC = 32,                      /* EXEC  */
+  YYSYMBOL_MOUNT = 33,                     /* MOUNT  */
+  YYSYMBOL_UMOUNT = 34,                    /* UMOUNT  */
+  YYSYMBOL_NUM = 35,                       /* NUM  */
+  YYSYMBOL_PAUSE = 36,                     /* PAUSE  */
+  YYSYMBOL_COMMENT = 37,                   /* COMMENT  */
+  YYSYMBOL_SEPARATOR = 38,                 /* SEPARATOR  */
   YYSYMBOL_YYACCEPT = 39,                  /* $accept  */
   YYSYMBOL_input = 40,                     /* input  */
   YYSYMBOL_parameters = 41,                /* parameters  */
@@ -158,9 +158,8 @@ enum yysymbol_kind_t
   YYSYMBOL_path_string = 46,               /* path_string  */
   YYSYMBOL_unit_size = 47,                 /* unit_size  */
   YYSYMBOL_fit_opt = 48,                   /* fit_opt  */
-  YYSYMBOL_val = 49,                       /* val  */
-  YYSYMBOL_part_type = 50,                 /* part_type  */
-  YYSYMBOL_del_type = 51                   /* del_type  */
+  YYSYMBOL_part_type = 49,                 /* part_type  */
+  YYSYMBOL_del_type = 50                   /* del_type  */
 };
 typedef enum yysymbol_kind_t yysymbol_kind_t;
 
@@ -468,18 +467,18 @@ union yyalloc
 #endif /* !YYCOPY_NEEDED */
 
 /* YYFINAL -- State number of the termination state.  */
-#define YYFINAL  18
+#define YYFINAL  27
 /* YYLAST -- Last index in YYTABLE.  */
-#define YYLAST   60
+#define YYLAST   63
 
 /* YYNTOKENS -- Number of terminals.  */
 #define YYNTOKENS  39
 /* YYNNTS -- Number of nonterminals.  */
-#define YYNNTS  13
+#define YYNNTS  12
 /* YYNRULES -- Number of rules.  */
-#define YYNRULES  39
+#define YYNRULES  40
 /* YYNSTATES -- Number of states.  */
-#define YYNSTATES  68
+#define YYNSTATES  65
 
 /* YYMAXUTOK -- Last valid token kind.  */
 #define YYMAXUTOK   293
@@ -532,10 +531,11 @@ static const yytype_int8 yytranslate[] =
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    81,    81,    86,    91,    96,   101,   106,   111,   119,
-     124,   133,   134,   135,   136,   137,   138,   139,   140,   141,
-     145,   149,   150,   154,   155,   159,   160,   164,   165,   166,
-     170,   171,   172,   176,   177,   181,   182,   183,   187,   188
+       0,    80,    80,    85,    90,    95,   100,   105,   110,   115,
+     119,   126,   131,   140,   141,   142,   143,   144,   145,   146,
+     147,   148,   152,   153,   157,   158,   162,   163,   167,   168,
+     172,   173,   174,   178,   179,   180,   184,   185,   186,   190,
+     191
 };
 #endif
 
@@ -552,12 +552,12 @@ static const char *yysymbol_name (yysymbol_kind_t yysymbol) YY_ATTRIBUTE_UNUSED;
 static const char *const yytname[] =
 {
   "\"end of file\"", "error", "\"invalid token\"", "MKDSK", "RMDSK",
-  "FDSK", "RUTA", "DDASH", "DDASHO", "DDOSPT", "PATH", "MB", "KB", "B",
-  "UNIT", "FFIT", "BFIT", "WFIT", "FIT", "IGUAL", "SIZE", "NAME", "ADD",
-  "DELET", "TYPE", "FULL", "FAST", "MBR", "DISK", "PRIMARY", "EXTENDED",
-  "LOGIC", "CADENA", "ID", "REP", "EXEC", "MOUNT", "UMOUNT", "NUM",
+  "FDSK", "RUTA", "PATH", "MB", "KB", "B", "UNIT", "FFIT", "BFIT", "WFIT",
+  "FIT", "IGUAL", "SIZE", "NAME", "ADD", "DELET", "TYPE", "FULL", "FAST",
+  "MBR", "DISK", "PRIMARY", "EXTENDED", "LOGIC", "CADENA", "ID", "REP",
+  "EXEC", "MOUNT", "UMOUNT", "NUM", "PAUSE", "COMMENT", "SEPARATOR",
   "$accept", "input", "parameters", "parameter", "separator", "rep_type",
-  "name_string", "path_string", "unit_size", "fit_opt", "val", "part_type",
+  "name_string", "path_string", "unit_size", "fit_opt", "part_type",
   "del_type", YY_NULLPTR
 };
 
@@ -580,7 +580,7 @@ static const yytype_int16 yytoknum[] =
 };
 #endif
 
-#define YYPACT_NINF (-31)
+#define YYPACT_NINF (-27)
 
 #define yypact_value_is_default(Yyn) \
   ((Yyn) == YYPACT_NINF)
@@ -594,13 +594,13 @@ static const yytype_int16 yytoknum[] =
      STATE-NUM.  */
 static const yytype_int8 yypact[] =
 {
-      -3,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    10,    -7,
-      -1,   -31,    -1,    -1,    -1,    -1,    -1,    -1,   -31,    -4,
-      -4,    -4,    -4,    -4,    -4,    -4,    -4,   -31,    35,     3,
-      15,    32,   -30,    18,    -2,     4,    29,    11,   -31,   -31,
-     -31,   -31,   -31,   -31,   -31,   -31,   -31,   -31,   -31,   -31,
-     -31,   -31,   -31,   -31,   -31,   -31,   -26,   -31,   -31,   -31,
-     -31,   -31,   -31,   -31,   -31,   -31,   -31,   -31
+      -3,    -1,    -1,    -1,    -1,    -1,    -1,    -1,   -27,   -27,
+       5,   -13,   -13,   -13,   -13,   -13,   -13,   -13,   -13,    -1,
+     -27,    -1,    -1,    -1,    -1,    -1,    -1,   -27,   -27,   -27,
+      -2,    13,    44,   -26,   -17,   -24,    40,    33,   -27,   -27,
+     -27,   -27,   -27,   -27,   -27,   -27,   -27,   -27,   -27,   -27,
+     -27,   -27,   -27,   -27,   -27,   -27,   -27,   -27,   -27,   -27,
+     -27,   -27,   -27,   -27,   -27
 };
 
   /* YYDEFACT[STATE-NUM] -- Default reduction number in state STATE-NUM.
@@ -608,27 +608,27 @@ static const yytype_int8 yypact[] =
      means the default is an error.  */
 static const yytype_int8 yydefact[] =
 {
-       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
-       2,    10,     3,     4,     5,     6,     7,     8,     1,     0,
-       0,     0,     0,     0,     0,     0,     0,     9,     0,     0,
-       0,     0,     0,     0,     0,     0,     0,     0,    25,    26,
-      11,    28,    27,    29,    12,    30,    32,    31,    13,    14,
-      21,    22,    23,    24,    18,    19,     0,    33,    16,    38,
-      39,    17,    37,    36,    35,    15,    20,    34
+       0,     0,     0,     0,     0,     0,     0,     0,     9,    10,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     2,
+      12,     3,     4,     5,     6,     7,     8,     1,    23,    22,
+       0,     0,     0,     0,     0,     0,     0,     0,    11,    28,
+      29,    13,    31,    30,    32,    14,    33,    35,    34,    15,
+      16,    24,    25,    26,    27,    20,    21,    18,    39,    40,
+      19,    38,    37,    36,    17
 };
 
   /* YYPGOTO[NTERM-NUM].  */
 static const yytype_int8 yypgoto[] =
 {
-     -31,   -31,    50,     8,    17,   -31,   -31,   -31,   -31,   -31,
-     -31,   -31,   -31
+     -27,   -27,    48,    16,    31,   -27,   -27,   -27,   -27,   -27,
+     -27,   -27
 };
 
   /* YYDEFGOTO[NTERM-NUM].  */
 static const yytype_int8 yydefgoto[] =
 {
-      -1,     8,    10,    11,    29,    54,    55,    40,    44,    48,
-      58,    65,    61
+      -1,    10,    19,    20,    30,    55,    56,    41,    45,    49,
+      64,    60
 };
 
   /* YYTABLE[YYPACT[STATE-NUM]] -- What to do in state STATE-NUM.  If
@@ -636,55 +636,57 @@ static const yytype_int8 yydefgoto[] =
      number is the opposite.  If YYTABLE_NINF, syntax error.  */
 static const yytype_int8 yytable[] =
 {
-       1,     2,     3,    19,    28,    56,     9,    20,    49,    38,
-      18,    21,    67,    22,    23,    24,    25,    26,    27,    66,
-      27,    27,    27,    27,    27,    27,    41,    42,    43,    59,
-      60,     4,     5,     6,     7,    39,    57,    30,    31,    32,
-      33,    34,    35,    36,    37,    50,    51,    45,    46,    47,
-      52,    53,    12,    13,    14,    15,    16,    17,    62,    63,
-      64
+       1,     2,     3,    28,    39,    27,    11,    51,    52,    50,
+      12,    57,    53,    54,    13,     0,    14,    15,    16,    17,
+      18,    42,    43,    44,     0,    29,     0,    40,     4,     5,
+       6,     7,     0,     8,     9,    38,     0,    38,    38,    38,
+      38,    38,    38,    31,    32,    33,    34,    35,    36,    37,
+      21,    22,    23,    24,    25,    26,    46,    47,    48,    61,
+      62,    63,    58,    59
 };
 
 static const yytype_int8 yycheck[] =
 {
-       3,     4,     5,    10,     8,     7,     7,    14,    38,     6,
-       0,    18,    38,    20,    21,    22,    23,    24,    10,     8,
-      12,    13,    14,    15,    16,    17,    11,    12,    13,    25,
-      26,    34,    35,    36,    37,    32,    38,    20,    21,    22,
-      23,    24,    25,    26,     9,    27,    28,    15,    16,    17,
-      32,    33,     2,     3,     4,     5,     6,     7,    29,    30,
-      31
+       3,     4,     5,    16,     6,     0,     7,    24,    25,    35,
+      11,    35,    29,    30,    15,    -1,    17,    18,    19,    20,
+      21,     8,     9,    10,    -1,    38,    -1,    29,    31,    32,
+      33,    34,    -1,    36,    37,    19,    -1,    21,    22,    23,
+      24,    25,    26,    12,    13,    14,    15,    16,    17,    18,
+       2,     3,     4,     5,     6,     7,    12,    13,    14,    26,
+      27,    28,    22,    23
 };
 
   /* YYSTOS[STATE-NUM] -- The (internal number of the) accessing
      symbol of state STATE-NUM.  */
 static const yytype_int8 yystos[] =
 {
-       0,     3,     4,     5,    34,    35,    36,    37,    40,     7,
-      41,    42,    41,    41,    41,    41,    41,    41,     0,    10,
-      14,    18,    20,    21,    22,    23,    24,    42,     8,    43,
-      43,    43,    43,    43,    43,    43,    43,     9,     6,    32,
-      46,    11,    12,    13,    47,    15,    16,    17,    48,    38,
-      27,    28,    32,    33,    44,    45,     7,    38,    49,    25,
-      26,    51,    29,    30,    31,    50,     8,    38
+       0,     3,     4,     5,    31,    32,    33,    34,    36,    37,
+      40,     7,    11,    15,    17,    18,    19,    20,    21,    41,
+      42,    41,    41,    41,    41,    41,    41,     0,    16,    38,
+      43,    43,    43,    43,    43,    43,    43,    43,    42,     6,
+      29,    46,     8,     9,    10,    47,    12,    13,    14,    48,
+      35,    24,    25,    29,    30,    44,    45,    35,    22,    23,
+      50,    26,    27,    28,    49
 };
 
   /* YYR1[YYN] -- Symbol number of symbol that rule YYN derives.  */
 static const yytype_int8 yyr1[] =
 {
-       0,    39,    40,    40,    40,    40,    40,    40,    40,    41,
-      41,    42,    42,    42,    42,    42,    42,    42,    42,    42,
-      43,    44,    44,    45,    45,    46,    46,    47,    47,    47,
-      48,    48,    48,    49,    49,    50,    50,    50,    51,    51
+       0,    39,    40,    40,    40,    40,    40,    40,    40,    40,
+      40,    41,    41,    42,    42,    42,    42,    42,    42,    42,
+      42,    42,    43,    43,    44,    44,    45,    45,    46,    46,
+      47,    47,    47,    48,    48,    48,    49,    49,    49,    50,
+      50
 };
 
   /* YYR2[YYN] -- Number of symbols on the right hand side of rule YYN.  */
 static const yytype_int8 yyr2[] =
 {
-       0,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       1,     4,     4,     4,     4,     4,     4,     4,     4,     4,
-       3,     1,     1,     1,     1,     1,     1,     1,     1,     1,
-       1,     1,     1,     1,     2,     1,     1,     1,     1,     1
+       0,     2,     2,     2,     2,     2,     2,     2,     2,     1,
+       1,     2,     1,     3,     3,     3,     3,     3,     3,     3,
+       3,     3,     1,     1,     1,     1,     1,     1,     1,     1,
+       1,     1,     1,     1,     1,     1,     1,     1,     1,     1,
+       1
 };
 
 
@@ -1154,257 +1156,261 @@ yyreduce:
   switch (yyn)
     {
   case 2: /* input: MKDSK parameters  */
-#line 82 "analizador/Parser.y"
+#line 81 "analizador/Parser.y"
         { 
             command->name = cCREATE_DISK;
             command->parameters = (yyvsp[0].params);
         }
-#line 1163 "analizador/Parser.cpp"
+#line 1165 "analizador/Parser.cpp"
     break;
 
   case 3: /* input: RMDSK parameters  */
-#line 87 "analizador/Parser.y"
+#line 86 "analizador/Parser.y"
         {
             command->name = cRMDISK;
             command->parameters = (yyvsp[0].params);
         }
-#line 1172 "analizador/Parser.cpp"
+#line 1174 "analizador/Parser.cpp"
     break;
 
   case 4: /* input: FDSK parameters  */
-#line 92 "analizador/Parser.y"
+#line 91 "analizador/Parser.y"
         {
             command->name = cFDISK;
             command->parameters = (yyvsp[0].params);   
         }
-#line 1181 "analizador/Parser.cpp"
+#line 1183 "analizador/Parser.cpp"
     break;
 
   case 5: /* input: REP parameters  */
-#line 97 "analizador/Parser.y"
+#line 96 "analizador/Parser.y"
         {
             command->name = cREP;
             command->parameters = (yyvsp[0].params);
         }
-#line 1190 "analizador/Parser.cpp"
+#line 1192 "analizador/Parser.cpp"
     break;
 
   case 6: /* input: EXEC parameters  */
-#line 102 "analizador/Parser.y"
+#line 101 "analizador/Parser.y"
         {
             command->name = cEXEC;
             command->parameters = (yyvsp[0].params);
         }
-#line 1199 "analizador/Parser.cpp"
+#line 1201 "analizador/Parser.cpp"
     break;
 
   case 7: /* input: MOUNT parameters  */
-#line 107 "analizador/Parser.y"
+#line 106 "analizador/Parser.y"
         {
             command->name = cMOUNT;
             command->parameters = (yyvsp[0].params);
         }
-#line 1208 "analizador/Parser.cpp"
+#line 1210 "analizador/Parser.cpp"
     break;
 
   case 8: /* input: UMOUNT parameters  */
-#line 112 "analizador/Parser.y"
+#line 111 "analizador/Parser.y"
         {
             command->name = cUMOUNT;
             command->parameters = (yyvsp[0].params);
         }
-#line 1217 "analizador/Parser.cpp"
+#line 1219 "analizador/Parser.cpp"
     break;
 
-  case 9: /* parameters: parameters parameter  */
+  case 9: /* input: PAUSE  */
+#line 116 "analizador/Parser.y"
+        {
+            command->name = cPAUSE;
+        }
+#line 1227 "analizador/Parser.cpp"
+    break;
+
+  case 10: /* input: COMMENT  */
 #line 120 "analizador/Parser.y"
+        {
+            command->name = cCOMMENT;
+        }
+#line 1235 "analizador/Parser.cpp"
+    break;
+
+  case 11: /* parameters: parameters parameter  */
+#line 127 "analizador/Parser.y"
         { 
             (yyvsp[-1].params)->push_back((yyvsp[0].param)); 
             (yyval.params) = (yyvsp[-1].params); 
         }
-#line 1226 "analizador/Parser.cpp"
+#line 1244 "analizador/Parser.cpp"
     break;
 
-  case 10: /* parameters: parameter  */
-#line 125 "analizador/Parser.y"
+  case 12: /* parameters: parameter  */
+#line 132 "analizador/Parser.y"
         { 
             std::vector<PARAMETER*>* v = new std::vector<PARAMETER*>();
             v->push_back((yyvsp[0].param)); 
             (yyval.params) = v; 
         }
-#line 1236 "analizador/Parser.cpp"
-    break;
-
-  case 11: /* parameter: DDASH PATH separator path_string  */
-#line 133 "analizador/Parser.y"
-                                                    { (yyval.param) = createParam(pPATH, (yyvsp[0].text), 0, tNONE); }
-#line 1242 "analizador/Parser.cpp"
-    break;
-
-  case 12: /* parameter: DDASH UNIT separator unit_size  */
-#line 134 "analizador/Parser.y"
-                                                    { (yyval.param) = createParam(pUNIT, NULL, 0, (yyvsp[0].pt)); }
-#line 1248 "analizador/Parser.cpp"
-    break;
-
-  case 13: /* parameter: DDASH FIT separator fit_opt  */
-#line 135 "analizador/Parser.y"
-                                                    { (yyval.param) = createParam(pFIT, NULL, 0, (yyvsp[0].pt)); }
 #line 1254 "analizador/Parser.cpp"
     break;
 
-  case 14: /* parameter: DDASH SIZE separator NUM  */
-#line 136 "analizador/Parser.y"
-                                                    { (yyval.param) = createParam(pSIZE, NULL, (yyvsp[0].value), tNONE); }
+  case 13: /* parameter: PATH separator path_string  */
+#line 140 "analizador/Parser.y"
+                                              { (yyval.param) = createParam(pPATH, (yyvsp[0].text), 0, tNONE); }
 #line 1260 "analizador/Parser.cpp"
     break;
 
-  case 15: /* parameter: DDASH TYPE separator part_type  */
-#line 137 "analizador/Parser.y"
-                                                    { (yyval.param) = createParam(pTYPE, NULL, 0, (yyvsp[0].pt)); }
+  case 14: /* parameter: UNIT separator unit_size  */
+#line 141 "analizador/Parser.y"
+                                              { (yyval.param) = createParam(pUNIT, NULL, 0, (yyvsp[0].pt)); }
 #line 1266 "analizador/Parser.cpp"
     break;
 
-  case 16: /* parameter: DDASH ADD separator val  */
-#line 138 "analizador/Parser.y"
-                                                    { (yyval.param) = createParam(pADD, NULL, (yyvsp[0].value), tNONE); }
+  case 15: /* parameter: FIT separator fit_opt  */
+#line 142 "analizador/Parser.y"
+                                              { (yyval.param) = createParam(pFIT, NULL, 0, (yyvsp[0].pt)); }
 #line 1272 "analizador/Parser.cpp"
     break;
 
-  case 17: /* parameter: DDASH DELET separator del_type  */
-#line 139 "analizador/Parser.y"
-                                                    { (yyval.param) = createParam(pDELETE, NULL, 0, (yyvsp[0].pt)); }
+  case 16: /* parameter: SIZE separator NUM  */
+#line 143 "analizador/Parser.y"
+                                              { (yyval.param) = createParam(pSIZE, NULL, (yyvsp[0].value), tNONE); }
 #line 1278 "analizador/Parser.cpp"
     break;
 
-  case 18: /* parameter: DDASH NAME separator rep_type  */
-#line 140 "analizador/Parser.y"
-                                                    { (yyval.param) = createParam(pNAME, NULL, 0, (yyvsp[0].pt)); }
+  case 17: /* parameter: TYPE separator part_type  */
+#line 144 "analizador/Parser.y"
+                                              { (yyval.param) = createParam(pTYPE, NULL, 0, (yyvsp[0].pt)); }
 #line 1284 "analizador/Parser.cpp"
     break;
 
-  case 19: /* parameter: DDASH NAME separator name_string  */
-#line 141 "analizador/Parser.y"
-                                                    { (yyval.param) = createParam(pNAME, (yyvsp[0].text), 0, tNONE); }
+  case 18: /* parameter: ADD separator NUM  */
+#line 145 "analizador/Parser.y"
+                                              { (yyval.param) = createParam(pADD, NULL, (yyvsp[0].value), tNONE); }
 #line 1290 "analizador/Parser.cpp"
     break;
 
-  case 21: /* rep_type: MBR  */
-#line 149 "analizador/Parser.y"
-                { (yyval.pt) = tMBR; }
+  case 19: /* parameter: DELET separator del_type  */
+#line 146 "analizador/Parser.y"
+                                              { (yyval.param) = createParam(pDELETE, NULL, 0, (yyvsp[0].pt)); }
 #line 1296 "analizador/Parser.cpp"
     break;
 
-  case 22: /* rep_type: DISK  */
-#line 150 "analizador/Parser.y"
-                { (yyval.pt) = tDISK; }
+  case 20: /* parameter: NAME separator rep_type  */
+#line 147 "analizador/Parser.y"
+                                              { (yyval.param) = createParam(pNAME, NULL, 0, (yyvsp[0].pt)); }
 #line 1302 "analizador/Parser.cpp"
     break;
 
-  case 23: /* name_string: CADENA  */
-#line 154 "analizador/Parser.y"
-                { (yyval.text) = (yyvsp[0].text); }
+  case 21: /* parameter: NAME separator name_string  */
+#line 148 "analizador/Parser.y"
+                                              { (yyval.param) = createParam(pNAME, (yyvsp[0].text), 0, tNONE); }
 #line 1308 "analizador/Parser.cpp"
     break;
 
-  case 24: /* name_string: ID  */
-#line 155 "analizador/Parser.y"
-                { (yyval.text) = (yyvsp[0].text); }
+  case 24: /* rep_type: MBR  */
+#line 157 "analizador/Parser.y"
+                { (yyval.pt) = tMBR; }
 #line 1314 "analizador/Parser.cpp"
     break;
 
-  case 25: /* path_string: RUTA  */
-#line 159 "analizador/Parser.y"
-                { (yyval.text) = (yyvsp[0].text); }
+  case 25: /* rep_type: DISK  */
+#line 158 "analizador/Parser.y"
+                { (yyval.pt) = tDISK; }
 #line 1320 "analizador/Parser.cpp"
     break;
 
-  case 26: /* path_string: CADENA  */
-#line 160 "analizador/Parser.y"
+  case 26: /* name_string: CADENA  */
+#line 162 "analizador/Parser.y"
                 { (yyval.text) = (yyvsp[0].text); }
 #line 1326 "analizador/Parser.cpp"
     break;
 
-  case 27: /* unit_size: KB  */
-#line 164 "analizador/Parser.y"
-            { (yyval.pt) = tKB; }
+  case 27: /* name_string: ID  */
+#line 163 "analizador/Parser.y"
+                { (yyval.text) = (yyvsp[0].text); }
 #line 1332 "analizador/Parser.cpp"
     break;
 
-  case 28: /* unit_size: MB  */
-#line 165 "analizador/Parser.y"
-            { (yyval.pt) = tMB; }
+  case 28: /* path_string: RUTA  */
+#line 167 "analizador/Parser.y"
+                { (yyval.text) = (yyvsp[0].text); }
 #line 1338 "analizador/Parser.cpp"
     break;
 
-  case 29: /* unit_size: B  */
-#line 166 "analizador/Parser.y"
-            { (yyval.pt) = tB; }
+  case 29: /* path_string: CADENA  */
+#line 168 "analizador/Parser.y"
+                { (yyval.text) = (yyvsp[0].text); }
 #line 1344 "analizador/Parser.cpp"
     break;
 
-  case 30: /* fit_opt: FFIT  */
-#line 170 "analizador/Parser.y"
-              { (yyval.pt) = tFF; }
+  case 30: /* unit_size: KB  */
+#line 172 "analizador/Parser.y"
+            { (yyval.pt) = tKB; }
 #line 1350 "analizador/Parser.cpp"
     break;
 
-  case 31: /* fit_opt: WFIT  */
-#line 171 "analizador/Parser.y"
-              { (yyval.pt) = tWF; }
+  case 31: /* unit_size: MB  */
+#line 173 "analizador/Parser.y"
+            { (yyval.pt) = tMB; }
 #line 1356 "analizador/Parser.cpp"
     break;
 
-  case 32: /* fit_opt: BFIT  */
-#line 172 "analizador/Parser.y"
-              { (yyval.pt) = tBF; }
+  case 32: /* unit_size: B  */
+#line 174 "analizador/Parser.y"
+            { (yyval.pt) = tB; }
 #line 1362 "analizador/Parser.cpp"
     break;
 
-  case 33: /* val: NUM  */
-#line 176 "analizador/Parser.y"
-             { (yyval.value) = (yyvsp[0].value); }
+  case 33: /* fit_opt: FFIT  */
+#line 178 "analizador/Parser.y"
+              { (yyval.pt) = tFF; }
 #line 1368 "analizador/Parser.cpp"
     break;
 
-  case 34: /* val: DDASH NUM  */
-#line 177 "analizador/Parser.y"
-                   { (yyval.value) = (yyvsp[0].value)*(-1); }
+  case 34: /* fit_opt: WFIT  */
+#line 179 "analizador/Parser.y"
+              { (yyval.pt) = tWF; }
 #line 1374 "analizador/Parser.cpp"
     break;
 
-  case 35: /* part_type: LOGIC  */
-#line 181 "analizador/Parser.y"
-                    { (yyval.pt) = tLOGIC; }
+  case 35: /* fit_opt: BFIT  */
+#line 180 "analizador/Parser.y"
+              { (yyval.pt) = tBF; }
 #line 1380 "analizador/Parser.cpp"
     break;
 
-  case 36: /* part_type: EXTENDED  */
-#line 182 "analizador/Parser.y"
-                    { (yyval.pt) = tEXTENDED; }
+  case 36: /* part_type: LOGIC  */
+#line 184 "analizador/Parser.y"
+                    { (yyval.pt) = tLOGIC; }
 #line 1386 "analizador/Parser.cpp"
     break;
 
-  case 37: /* part_type: PRIMARY  */
-#line 183 "analizador/Parser.y"
-                    { (yyval.pt) = tPRIMARY; }
+  case 37: /* part_type: EXTENDED  */
+#line 185 "analizador/Parser.y"
+                    { (yyval.pt) = tEXTENDED; }
 #line 1392 "analizador/Parser.cpp"
     break;
 
-  case 38: /* del_type: FULL  */
-#line 187 "analizador/Parser.y"
-                    { (yyval.pt) = tFULL; }
+  case 38: /* part_type: PRIMARY  */
+#line 186 "analizador/Parser.y"
+                    { (yyval.pt) = tPRIMARY; }
 #line 1398 "analizador/Parser.cpp"
     break;
 
-  case 39: /* del_type: FAST  */
-#line 188 "analizador/Parser.y"
-                    { (yyval.pt) = tFAST; }
+  case 39: /* del_type: FULL  */
+#line 190 "analizador/Parser.y"
+                    { (yyval.pt) = tFULL; }
 #line 1404 "analizador/Parser.cpp"
     break;
 
+  case 40: /* del_type: FAST  */
+#line 191 "analizador/Parser.y"
+                    { (yyval.pt) = tFAST; }
+#line 1410 "analizador/Parser.cpp"
+    break;
 
-#line 1408 "analizador/Parser.cpp"
+
+#line 1414 "analizador/Parser.cpp"
 
       default: break;
     }
@@ -1598,5 +1604,5 @@ yyreturn:
   return yyresult;
 }
 
-#line 191 "analizador/Parser.y"
+#line 194 "analizador/Parser.y"
 

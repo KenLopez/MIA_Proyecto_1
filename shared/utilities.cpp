@@ -195,21 +195,13 @@ string getCMD(int argc, char* argv[]){
     return args;
 }
 
-void parse(const char *cmd)
-{
+void execCmd(COMMAND* command){
     Mkdisk *mkdsk;
     Rmdisk *rmdsk; 
     Fdisk *fdsk; 
     Rep *rep; 
     Exec *exec;
-    YY_BUFFER_STATE state;
-    COMMAND* command = new COMMAND();
 
-    YY_BUFFER_STATE buffer = yy_scan_string(cmd);
-    if(yyparse(command)){
-        cout<<"ERROR: El comando: "<<cmd<<", no pudo ser ejecutado."<<endl;
-        return;
-    }
     switch (command->name)
     {
     case cCREATE_DISK:
@@ -239,7 +231,26 @@ void parse(const char *cmd)
     case cUMOUNT:
         cout<<"UMOUNT"<<endl;
         break;
+    case cPAUSE:
+        cout<<"Ejecución detenida. Presione cualquier tecla para continuar...";
+        getchar();
+        cout<<endl;
+        break;
     default:
         break;
     }
+}
+
+COMMAND* parse(string cmd)
+{   
+    COMMAND* command = new COMMAND();
+
+    char* entrada = (char*)cmd.c_str();
+
+    YY_BUFFER_STATE state = yy_scan_string(entrada);
+    if (yyparse(command)) {
+        cout<<"ERROR: El comando: "<<cmd<<", no pudo ser ejecutado."<<endl;
+        return NULL;
+    }
+    return command;
 }

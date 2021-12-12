@@ -45,6 +45,8 @@ PART_STRUCT* getExtended(MBR_STRUCT* mbr);
 
 string getCMD(int argc, char* argv[]);
 
-void parse(const char *cmd);
+COMMAND* parse(string cmd);
+
+void execCmd(COMMAND* command);
 
 #endif

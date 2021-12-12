@@ -1,3 +1,4 @@
+%option case-insensitive
 %{
     #include <iostream>
     #include <vector>
@@ -8,40 +9,51 @@
     using std::string;
 %}
 
-%option case-insensitive
 %option outfile="analizador/Lexer.cpp" header-file="analizador/Lexer.h"
-%option noyywrap
+%option noyywrap nounput batch noinput
+
+
+BLANCOS     [ \r\t\n]+
+COMENTARIOS "#".* 
+GUION       "-"|"–"
+COMILLA     [\"]|"“"|"”"
+ENTERO      {GUION}?[0-9]+
+LETRA       [a-zA-Z]
+CARS        ({LETRA}|{ENTERO}|"_"|"-"|"–")
+ID          ({COMILLA}(({CARS}|" ")+){COMILLA})|({CARS}+)
+RUTA        ([\/]({CARS}|" ")+)*([\/]({CARS}|" ")+"."{CARS}+)
+CADENA      ({COMILLA}{RUTA}{COMILLA})
 
 %%
-[ \r\n\t]*      { continue; /* Ignoramos espacios. */ }
-#[^\n]*        { continue; /* Ignoramos comentarios. */ }
+{BLANCOS}       { continue; /* Ignoramos espacios. */ }
+{COMENTARIOS}   { return COMMENT; /* Ignoramos comentarios. */ }
 
-"rmdisk"        { yylval.text = strdup(yytext); return RMDSK; }
-"mkdisk"        { yylval.text = strdup(yytext); return MKDSK;}
-"fdisk"         { yylval.text = strdup(yytext); return FDSK; }
-
-"="             {yylval.text;return IGUAL;}
-"-"             {return DDASH;}
-"~"             {return DDASHO;}
-":"             {return DDOSPT;}
-
+"rmdisk"        { return RMDSK; }
+"mkdisk"        { return MKDSK; }
+"fdisk"         { return FDSK; }
+"pause"         { return PAUSE; }
 "exec"          {return EXEC;}
-"size"          {return SIZE;}
-"path"          {return PATH;}
-"type"          {return TYPE;}
-"delete"        {return DELET;}
-"name"          {return NAME;}
-"add"           {return ADD;}
-"rep"           {return REP;}
-"mount"         {return MOUNT;}
-"umount"        {return MOUNT;}
-"unit"          {return UNIT;}
-"fit"           {return FIT;}
+
+"="             {return IGUAL;}
+"~:~"           {return SEPARATOR;}
+
+{GUION}"size"          {return SIZE;}
+{GUION}"path"          {return PATH;}
+{GUION}"type"          {return TYPE;}
+{GUION}"delete"        {return DELET;}
+{GUION}"name"          {return NAME;}
+{GUION}"add"           {return ADD;}
+{GUION}"rep"           {return REP;}
+{GUION}"mount"         {return MOUNT;}
+{GUION}"umount"        {return MOUNT;}
+{GUION}"unit"          {return UNIT;}
+{GUION}"fit"           {return FIT;}
 
 "mbr"           {return MBR;}
 "disk"          {return DISK;}
 "fast"          {return FAST;}
 "full"          {return FULL;}
+
 "BF"            {return BFIT;}
 "FF"            {return FFIT;}
 "WF"            {return WFIT;}
@@ -53,9 +65,9 @@
 "L"             {return LOGIC;}
 
 
-[0-9]+                                                                      {yylval.value = atoi(yytext); return NUM;} 
-[A-Za-z0-9_]([A-Za-z0-9_ ])*[A-Za-z0-9_]                                    {yylval.text = strdup(yytext); return ID;}
-["][^"]*["]                                                                 {strncpy(yylval.text, &yytext[1], strlen(yytext)-2); return CADENA;}
-((".")*("/"))?([A-Za-z0-9_ ])+("/"([A-Za-z0-9_ ])+)*("."([a-zA-Z0-9])+)     {yylval.text = strdup(yytext); return RUTA;}
-.                                                                           {std::cout<<"Error Lexico: "<< yytext<<std::endl;}
+{ENTERO}        {yylval.value = atoi(yytext); return NUM;} 
+{ID}            {yylval.text = strdup(yytext); return ID;}
+{RUTA}          {yylval.text = strdup(yytext); return RUTA;}
+{CADENA}        {yylval.text = strndup(&yytext[1], strlen(yytext)-2); return CADENA;}
+.               {std::cout<<"ERROR: El caracter "<< yytext<<" no pudo ser reconocido."<<std::endl;}
 %%

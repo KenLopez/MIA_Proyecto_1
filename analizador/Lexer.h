@@ -469,7 +469,7 @@ extern int yylex (void);
 #undef yyTABLES_NAME
 #endif
 
-#line 61 "analizador/Lexer.l"
+#line 73 "analizador/Lexer.l"
 
 
 #line 475 "analizador/Lexer.h"

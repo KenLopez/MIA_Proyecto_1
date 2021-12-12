@@ -1,8 +1,5 @@
 #include <iostream>
-#include <sys/stat.h>
-#include <fstream>
 #include <vector>
-#include <stdio.h>
 using namespace std;
 #include "headers/utilities.h"
 
@@ -14,6 +11,8 @@ int main(int argc, char* argv[])
     }
 
     string args = getCMD(argc, argv);
-    parse(args.c_str());
+    COMMAND* command;
+    command = parse(args.c_str());
+    execCmd(command);
     return 0;
 }
