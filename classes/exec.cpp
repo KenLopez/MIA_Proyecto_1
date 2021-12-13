@@ -39,6 +39,7 @@ void Exec::execute(vector<PARAMETER*>* params){
         COMMAND* command;
         for (size_t i = 0; i < commands.size(); i++)
         {
+            cout<<commands[i]<<endl;
             command = parse(commands[i]);
             execCmd(command);
         }

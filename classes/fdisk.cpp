@@ -216,6 +216,8 @@ void Fdisk::changePrimary(int index){
                 primaries[index]->part_size += add;
                 newPrimary();
                 cout << "La partición "<<name<<" ha sido ampliada exitosamente en "<<path<<"."<<endl; 
+            }else{
+                cout << "ERROR FDISK: La partición "<<name<<" no pudo ser ampliada en "<<path<<", no existe suficiente espacio disponible."<<endl;
             }
         }else if(mbr.mbr_tamano-(primaries[index]->part_start+primaries[index]->part_size)>=add){
             primaries[index]->part_size += add;
@@ -239,7 +241,7 @@ void Fdisk::changePrimary(int index){
 void Fdisk::changeLogic(int index){
     if(add>0){
         int lim = logics[index].part_start+logics[index].part_size;
-        if(logics[index].part_next==-1 && (partition->part_start+partition->part_size-1)>=add){
+        if(logics[index].part_next==-1 && ((partition->part_start+partition->part_size)>=(logics[index].part_start+logics[index].part_size+add))){
             logics[index].part_size += add;
             newLogic(&logics[index]);
             cout << "La partición "<<name<<" ha sido ampliada exitosamente en "<<path<<"."<<endl;
@@ -252,7 +254,7 @@ void Fdisk::changeLogic(int index){
         }
     }else{
         int result = logics[index].part_size+add;
-        if(result>sizeof(EBR_STRUCT)){
+        if(result>0 && result>sizeof(EBR_STRUCT)){
             logics[index].part_size = result;
             newLogic(&logics[index]);
             cout << "La partición "<<name<<" ha sido encogida exitosamente en "<<path<<"."<<endl; 
@@ -406,7 +408,7 @@ bool Fdisk::allocatePartition(vector<DISK_SPACE> free){
 }
 
 vector<DISK_SPACE> Fdisk::getAvailablePrimary(){
-    vector<DISK_SPACE>free;
+    vector<DISK_SPACE>free ;
     free.push_back(newSpace(sizeof(MBR_STRUCT)+1, mbr.mbr_tamano-sizeof(MBR_STRUCT)));
     int i, j;
     for ( i = 0; i < primaries.size(); i++)
@@ -421,16 +423,16 @@ vector<DISK_SPACE> Fdisk::getAvailablePrimary(){
                 
                 if(prim.part_start == fr.ini){
                     if(prim_end != fr_end){
-                        free.erase(free.begin()+j);
-                        free.push_back(newSpace(prim_end+1, fr.size-prim.part_size));
+                        free[j].ini = prim_end+1;
+                        free[j].size = fr.size-prim.part_size;
                     }
                 }else if(prim_end == fr_end){
-                    free.erase(free.begin()+j);
-                    free.push_back(newSpace(fr.ini, fr.size-prim.part_size));
+                    free[j].ini = fr.ini;
+                    free[j].size = fr.size-prim.part_size;
                 }else if(prim.part_start>fr.ini && prim_end<fr_end){
-                    free.erase(free.begin()+j);
-                    free.push_back(newSpace(fr.ini, prim.part_start-fr.ini));
-                    free.push_back(newSpace(prim_end+1, fr_end-prim_end));
+                    free[j].ini = fr.ini;
+                    free[j].size = prim.part_start-fr.ini;
+                    free.insert(free.begin()+j+1, newSpace(prim_end+1, fr_end-prim_end));
                 }
             }
             

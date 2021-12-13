@@ -77,7 +77,7 @@ void Mkdisk::execute(vector<PARAMETER*>* params){
         }
     }
     if(path=="" || size<1){
-        cout<<"ERROR MKDISK: Comando mkdisk no posee parámetros obligatorios (unit, path)."<<endl;
+        cout<<"ERROR MKDISK: Comando mkdisk no posee parámetros obligatorios (size, path)."<<endl;
         return;
     }
     if(fit == tNONE){ fit = tFF; }

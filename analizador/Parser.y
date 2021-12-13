@@ -51,7 +51,7 @@ void yyerror(COMMAND *command, const char *msg) { return; }
 %token <text>UMOUNT
 %token <value>NUM
 %token <value>PAUSE
-%token <value>COMMENT
+%token <text>COMMENT
 %token <text>SEPARATOR
 
 %type <params>parameters
