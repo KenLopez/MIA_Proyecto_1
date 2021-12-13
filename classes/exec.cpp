@@ -1,5 +1,5 @@
 #include "../headers/exec.h"
-
+#include "../headers/mount.h"
 Exec::Exec(){
     path = "";
 }
@@ -7,6 +7,7 @@ Exec::Exec(){
 void Exec::execute(vector<PARAMETER*>* params){
     int i;
     PARAMETER* p;
+    Mount mount;
     for (i = 0; i < params->size(); i++)
     {
         p = (*params)[i];
@@ -27,6 +28,10 @@ void Exec::execute(vector<PARAMETER*>* params){
             return;
         }
     }
+    if(path==""){
+        cout<<"ERROR EXEC: Comando exec no posee parámetros obligatorios (path)."<<endl;
+        return;
+    }
     ifstream file(path.c_str());
     if(file.good()){
         string data;
@@ -41,7 +46,13 @@ void Exec::execute(vector<PARAMETER*>* params){
         {
             cout<<commands[i]<<endl;
             command = parse(commands[i]);
-            execCmd(command);
+            if(command->name == cMOUNT){
+                mount.mountNew(command->parameters);
+            }else if(command->name == cUMOUNT){
+                mount.unmount(command->parameters);
+            }else{
+                execCmd(command);
+            }   
         }
     }else{
         cout << "ERROR EXEC: El archivo "<<getName(path)<<" no fue encontrado en la ruta especificada."<<endl;

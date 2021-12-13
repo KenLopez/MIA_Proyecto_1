@@ -20,7 +20,8 @@ COMILLA     [\"]|"“"|"”"
 ENTERO      {GUION}?[0-9]+
 LETRA       [a-zA-Z]
 CARS        ({LETRA}|{ENTERO}|"_"|"-"|"–")
-ID          ({COMILLA}(({CARS}|" ")+){COMILLA})|({CARS}+)
+ID          ({CARS}+)
+IDC         ({COMILLA}{ID}{COMILLA})
 RUTA        ([\/]({CARS}|" ")+)*([\/]({CARS}|" ")+"."{CARS}+)
 CADENA      ({COMILLA}{RUTA}{COMILLA})
 
@@ -33,6 +34,8 @@ CADENA      ({COMILLA}{RUTA}{COMILLA})
 "fdisk"         { return FDSK; }
 "pause"         { return PAUSE; }
 "exec"          {return EXEC;}
+"mount"         {return MOUNT;}
+"unmount"       {return UMOUNT;}
 
 "="             {return IGUAL;}
 "~:~"           {return SEPARATOR;}
@@ -44,10 +47,9 @@ CADENA      ({COMILLA}{RUTA}{COMILLA})
 {GUION}"name"          {return NAME;}
 {GUION}"add"           {return ADD;}
 {GUION}"rep"           {return REP;}
-{GUION}"mount"         {return MOUNT;}
-{GUION}"umount"        {return MOUNT;}
 {GUION}"unit"          {return UNIT;}
 {GUION}"fit"           {return FIT;}
+{GUION}"id"            {return PID;}
 
 "mbr"           {return MBR;}
 "disk"          {return DISK;}
@@ -67,6 +69,7 @@ CADENA      ({COMILLA}{RUTA}{COMILLA})
 
 {ENTERO}        {yylval.value = atoi(yytext); return NUM;} 
 {ID}            {yylval.text = strdup(yytext); return ID;}
+{IDC}           {yylval.text = strndup(&yytext[1], strlen(yytext)-2); return ID;}
 {RUTA}          {yylval.text = strdup(yytext); return RUTA;}
 {CADENA}        {yylval.text = strndup(&yytext[1], strlen(yytext)-2); return CADENA;}
 .               {std::cout<<"ERROR: El caracter "<< yytext<<" no pudo ser reconocido."<<std::endl;}

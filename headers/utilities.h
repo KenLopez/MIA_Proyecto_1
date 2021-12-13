@@ -49,4 +49,6 @@ COMMAND* parse(string cmd);
 
 void execCmd(COMMAND* command);
 
+string intToLetter(int num);
+
 #endif

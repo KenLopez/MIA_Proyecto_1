@@ -53,6 +53,7 @@ void yyerror(COMMAND *command, const char *msg) { return; }
 %token <value>PAUSE
 %token <text>COMMENT
 %token <text>SEPARATOR
+%token <text>PID
 
 %type <params>parameters
 %type <param>parameter
@@ -146,6 +147,7 @@ void yyerror(COMMAND *command, const char *msg) { return; }
         |DELET separator del_type             { $$ = createParam(pDELETE, NULL, 0, $3); }
         |NAME separator rep_type              { $$ = createParam(pNAME, NULL, 0, $3); }
         |NAME separator name_string           { $$ = createParam(pNAME, $3, 0, tNONE); }
+        |PID separator name_string           { $$ = createParam(pID, $3, 0, tNONE); }
         ;
 
     separator

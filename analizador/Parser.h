@@ -89,7 +89,8 @@ extern int yydebug;
     NUM = 290,                     /* NUM  */
     PAUSE = 291,                   /* PAUSE  */
     COMMENT = 292,                 /* COMMENT  */
-    SEPARATOR = 293                /* SEPARATOR  */
+    SEPARATOR = 293,               /* SEPARATOR  */
+    PID = 294                      /* PID  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
@@ -98,7 +99,7 @@ extern int yydebug;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 70 "analizador/Parser.y"
+#line 71 "analizador/Parser.y"
 
     char* text;
     int value;
@@ -106,7 +107,7 @@ union YYSTYPE
     std::vector<PARAMETER*>* params;
     PARAM_TYPE pt;
 
-#line 110 "analizador/Parser.h"
+#line 111 "analizador/Parser.h"
 
 };
 typedef union YYSTYPE YYSTYPE;

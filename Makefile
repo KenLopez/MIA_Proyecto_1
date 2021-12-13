@@ -1,7 +1,7 @@
 # Makefile
 
-FILES = analizador/Lexer.cpp analizador/Parser.cpp shared/Structs.cpp classes/mkdisk.cpp classes/rmdisk.cpp classes/fdisk.cpp classes/exec.cpp classes/rep.cpp shared/utilities.cpp main.cpp
-CC = g++ 
+FILES = analizador/Lexer.cpp analizador/Parser.cpp classes/mount.cpp shared/Structs.cpp classes/mkdisk.cpp classes/rmdisk.cpp classes/fdisk.cpp classes/exec.cpp classes/rep.cpp shared/utilities.cpp main.cpp
+CC = g++
 CFLAGS = -g -ansi
 
 main: $(FILES)

@@ -3,6 +3,10 @@
 #include <stdlib.h>
 #include <vector>
 #include <time.h>
+#include <string>
+#include <vector>
+using std::string;
+using std::vector;
 
 /*** Constantes ENUM ***/
 
@@ -30,6 +34,7 @@ typedef enum tagPARAM_NAME{
     pDELETE, 
     pNAME,
     pADD,
+    pID,
     
 } PARAM_NAME;
 
@@ -91,6 +96,21 @@ typedef struct tagEBR
     char part_name[16];
 
 } EBR_STRUCT;
+
+typedef struct tagPartitionMount{
+    string id;
+    int status;
+    PARAM_TYPE type;
+    string name;
+    int ini;
+} PART_MOUNT;
+
+typedef struct tagDiskMount
+{
+    string disk;
+    int status;
+    vector<PART_MOUNT> mounted;
+} DISK_MOUNT;
 
 typedef struct tagDISK_SPACE
 {

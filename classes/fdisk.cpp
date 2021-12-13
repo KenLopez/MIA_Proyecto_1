@@ -106,7 +106,7 @@ void Fdisk::execute(vector<PARAMETER*>* params){
         }
     }
     if((size==-1 && add==0 && delet==tNONE) || path=="" || name==""){
-        cout<<"ERROR FDISK: Comando fdisk no posee parámetros obligatorios (size o add o delete; path, name)."<<endl;
+        cout<<"ERROR FDISK: Comando fdisk no posee parámetros obligatorios (size / add / delete; path, name)."<<endl;
         return;
     }
     if(name.length()>16){ cout<<"ERROR FDISK: Nombre de partición supera la longitud máxima (16)."<<endl; return; }

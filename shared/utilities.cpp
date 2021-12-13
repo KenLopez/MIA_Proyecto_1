@@ -81,6 +81,13 @@ char paramToChar(PARAM_TYPE t){
     }
 }
 
+string intToLetter(int num){
+    string letter;
+    char symbol = (char)('a' + num);
+    letter.push_back(symbol);
+    return letter;
+}
+
 PARAM_TYPE charToParam(char t){
     switch (t)
     {
@@ -224,12 +231,6 @@ void execCmd(COMMAND* command){
     case cEXEC:
         exec = new Exec();
         exec->execute(command->parameters);
-        break;
-    case cMOUNT:
-        cout<<"MOUNT"<<endl;
-        break;
-    case cUMOUNT:
-        cout<<"UMOUNT"<<endl;
         break;
     case cPAUSE:
         cout<<"Ejecución detenida. Presione cualquier tecla para continuar...";

@@ -2,6 +2,7 @@
 #include <vector>
 using namespace std;
 #include "headers/utilities.h"
+#include "headers/mount.h"
 
 int main(int argc, char* argv[])
 {
@@ -12,7 +13,15 @@ int main(int argc, char* argv[])
 
     string args = getCMD(argc, argv);
     COMMAND* command;
+    Mount mount;
     command = parse(args.c_str());
-    execCmd(command);
+    if(command->name == cMOUNT){
+        mount.mountNew(command->parameters);
+    
+    }else if(command->name == cUMOUNT){
+        mount.unmount(command->parameters);
+    }else{
+        execCmd(command);
+    }
     return 0;
 }
