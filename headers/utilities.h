@@ -60,4 +60,7 @@ string charToString(char ch);
 
 string getNameExt(string f_path);
 
+void createDirs(string dirs);
+
+
 #endif

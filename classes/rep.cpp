@@ -57,7 +57,7 @@ void Rep::execute(vector<PARAMETER*>* params){
     for ( i = 0; i < mount->mounted.size(); i++)
     {
         if(mount->mounted[i].status){
-            for ( j = 0; j < mount->mounted[i].mounted.size(); i++){
+            for ( j = 0; j < mount->mounted[i].mounted.size(); j++){
                 if(mount->mounted[i].mounted[j].status && mount->mounted[i].mounted[j].id == id){
                     disk = mount->mounted[i].disk;
                     partition = &(mount->mounted[i].mounted[j]);
@@ -135,10 +135,9 @@ void Rep::createMBR(FILE* file){
     if(FILE *file = fopen(ruta.c_str(), "w")){
         fputs(dot.c_str(), file);
     }
-    if(mkdir(getDIR(path).c_str(), 0777) != -1){
-        cout<<"Se creó directorio"<<endl;
-    }
+    createDirs(getDIR(path).c_str());
     std::string syst = "dot -Tsvg ../reporte.dot -o \"" + output + ".svg\"";
+    cout<<syst<<endl;
     system(syst.c_str());
     cout<<"Se creo el reporte: "<<getName(path)<<" correctamente."<<endl;
 }

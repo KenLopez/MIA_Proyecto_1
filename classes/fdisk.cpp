@@ -266,6 +266,12 @@ void Fdisk::changeLogic(int index){
 }
 
 void Fdisk::deletePrimary(int index){
+    if(primaries[index]->part_type == 'E'){
+        if(logics.size()>0){
+            cout<<"ERROR FDISK: La particion "<<primaries[index]->part_name<<" no pudo ser eliminada, pues es una partición extendida y existen particiones lógicas creadas."<<endl;
+            return;
+        }
+    }
     switch (delet)
     {
     case tFULL:

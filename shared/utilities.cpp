@@ -28,6 +28,19 @@ vector<string> split(string delim, string str){
 
 }
 
+void createDirs(string dirs){
+    int i;
+    vector<string> d = split("/", dirs);
+    string final = "/";
+    for (i = 1; i < d.size(); i++)
+    {
+        final+=d[i];
+        mkdir(final.c_str(), 0777)==-1;
+        final+="/";
+    }
+    
+}
+
 string getDIR(string f_path){
     vector<string> v = split("/", f_path);
     string p;
@@ -278,7 +291,7 @@ COMMAND* parse(string cmd)
     char* entrada = (char*)cmd.c_str();
 
     YY_BUFFER_STATE state = yy_scan_string(entrada);
-    if (yyparse(command)) {
+    if (yyparse(command) || !command->name) {
         cout<<"ERROR: El comando: "<<cmd<<", no pudo ser ejecutado."<<endl;
         return NULL;
     }

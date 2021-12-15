@@ -38,7 +38,9 @@ void Exec::execute(vector<PARAMETER*>* params){
         int i;
         while (getline (file, data)) 
         {
-            commands.push_back(data);
+            if(data != ""){
+                commands.push_back(data);   
+            }
         }
         file.close();
         COMMAND* command;
@@ -46,7 +48,9 @@ void Exec::execute(vector<PARAMETER*>* params){
         {
             cout<<commands[i]<<endl;
             command = parse(commands[i]);
-            execCmd(command, &mount);
+            if(command!=NULL){
+                execCmd(command, &mount);
+            }
         }
     }else{
         cout << "ERROR EXEC: El archivo "<<getName(path)<<" no fue encontrado en la ruta especificada."<<endl;

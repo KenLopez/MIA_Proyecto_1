@@ -84,26 +84,17 @@ void Mkdisk::execute(vector<PARAMETER*>* params){
     if(unit == tNONE){ unit = tMB; }
     size = convertBytes(size, unit);
     if(FILE *file = fopen(path.c_str(), "r")){
-         
         cout << "ERROR MKDISK: El disco "<<getName(path)<<" ya existe en "<<path<<"."<<endl; 
         fclose(file);
-    }
-    else { 
+        return;
+    }else { 
+        createDirs(getDIR(path));
         if(FILE *file = fopen(path.c_str(), "w")){
             writeDisk(file);
             return;
-        }
-        if(mkdir(getDIR(path).c_str(), 0777) == -1){
-            cout<<"ERROR MKDISK: No se pudo crear el directorio."<<endl;
-            return;
         }else{
-            if(FILE *file = fopen(path.c_str(), "w")){
-                writeDisk(file);
-                return;
-            }else{
-               cout<<"ERROR MKDISK: No se pudo crear el disco."<<endl;
-                return; 
-            }
+            cout<<"ERROR MKDISK: No se pudo crear el disco."<<endl;
+            return; 
         }
     }
 }

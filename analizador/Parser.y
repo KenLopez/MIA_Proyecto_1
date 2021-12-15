@@ -79,42 +79,42 @@ void yyerror(COMMAND *command, const char *msg) { return; }
 
 %%
     input
-        :MKDSK parameters 
+        :MKDSK parameters inside_comment
         { 
             command->name = cCREATE_DISK;
             command->parameters = $2;
         }
-        |RMDSK parameters
+        |RMDSK parameters inside_comment
         {
             command->name = cRMDISK;
             command->parameters = $2;
         }
-        |FDSK parameters
+        |FDSK parameters inside_comment
         {
             command->name = cFDISK;
             command->parameters = $2;   
         }
-        |REP parameters
+        |REP parameters inside_comment
         {
             command->name = cREP;
             command->parameters = $2;
         }
-        |EXEC parameters
+        |EXEC parameters inside_comment
         {
             command->name = cEXEC;
             command->parameters = $2;
         }
-        |MOUNT parameters
+        |MOUNT parameters inside_comment
         {
             command->name = cMOUNT;
             command->parameters = $2;
         }
-        |UMOUNT parameters
+        |UMOUNT parameters inside_comment
         {
             command->name = cUMOUNT;
             command->parameters = $2;
         }
-        |PAUSE
+        |PAUSE inside_comment
         {
             command->name = cPAUSE;
         }
@@ -122,6 +122,11 @@ void yyerror(COMMAND *command, const char *msg) { return; }
         {
             command->name = cCOMMENT;
         }
+        ;
+    
+    inside_comment
+        : COMMENT
+        |
         ;
     
     parameters

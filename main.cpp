@@ -15,6 +15,8 @@ int main(int argc, char* argv[])
     COMMAND* command;
     Mount mount;
     command = parse(args.c_str());
-    execCmd(command, &mount);
+    if(command!=NULL){
+        execCmd(command, &mount);
+    }
     return 0;
 }
