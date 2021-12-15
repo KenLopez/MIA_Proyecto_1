@@ -35,6 +35,7 @@ typedef enum tagPARAM_NAME{
     pNAME,
     pADD,
     pID,
+    pRUTA,
     
 } PARAM_NAME;
 

@@ -46,13 +46,7 @@ void Exec::execute(vector<PARAMETER*>* params){
         {
             cout<<commands[i]<<endl;
             command = parse(commands[i]);
-            if(command->name == cMOUNT){
-                mount.mountNew(command->parameters);
-            }else if(command->name == cUMOUNT){
-                mount.unmount(command->parameters);
-            }else{
-                execCmd(command);
-            }   
+            execCmd(command, &mount);
         }
     }else{
         cout << "ERROR EXEC: El archivo "<<getName(path)<<" no fue encontrado en la ruta especificada."<<endl;

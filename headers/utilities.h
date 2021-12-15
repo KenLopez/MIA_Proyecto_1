@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <vector>
+#include <sstream>
 #include "Structs.h"
 #include "../headers/mkdisk.h"
 #include "../headers/rmdisk.h"
@@ -18,6 +19,8 @@ using std::vector;
 using std::string;
 using std::cout;
 using std::endl;
+
+class Mount;
 
 vector<string> split(string delim, string str);
 
@@ -47,8 +50,14 @@ string getCMD(int argc, char* argv[]);
 
 COMMAND* parse(string cmd);
 
-void execCmd(COMMAND* command);
+void execCmd(COMMAND* command, Mount* mount);
 
 string intToLetter(int num);
+
+string intToString(int num);
+
+string charToString(char ch);
+
+string getNameExt(string f_path);
 
 #endif

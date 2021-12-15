@@ -15,13 +15,6 @@ int main(int argc, char* argv[])
     COMMAND* command;
     Mount mount;
     command = parse(args.c_str());
-    if(command->name == cMOUNT){
-        mount.mountNew(command->parameters);
-    
-    }else if(command->name == cUMOUNT){
-        mount.unmount(command->parameters);
-    }else{
-        execCmd(command);
-    }
+    execCmd(command, &mount);
     return 0;
 }

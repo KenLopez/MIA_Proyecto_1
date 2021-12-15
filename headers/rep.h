@@ -15,14 +15,16 @@ using std::vector;
 using std::string;
 using std::endl;
 using std::cout;
+class Mount;
 class Rep
 {
 public:
     PARAM_TYPE name;
-    string path, ruta, root, id;
+    string path, id, disk;
+    Mount* mount;
     Rep();
     void execute(vector<PARAMETER*>* params);
-    void createDisk(FILE* file);
+    void createMBR(FILE* file);
     
 };
 #endif

@@ -1,0 +1,87 @@
+digraph G{
+"Disco1.disk"[ shape=plaintext label=<
+<table cellpadding="5" cellspacing="0" border="0">
+<tr><td colspan="2" align="left">MBR Disco1.disk</td></tr>
+<tr><td border="1">Nombre</td>
+<td border="1">Valor</td></tr>
+<tr><td border="1">mbr_tamaño</td><td border="1">10000000</td></tr>
+<tr><td border="1">mbr_fecha_creacion</td>
+<td border="1">15/12/2021 01:02:32</td></tr>
+<tr><td border="1">mbr_disk_signature</td>
+<td border="1">9830</td></tr>
+<tr><td border="1">disk_fit</td>
+<td border="1">F</td></tr>
+<tr><td border="1" colspan="2">mbr_partition1</td></tr>
+<tr><td border="1">part_status</td><td border="1">1</td></tr>
+<tr><td border="1">part_type</td><td border="1">E</td></tr>
+<tr><td border="1">part_fit</td><td border="1">B</td></tr>
+<tr><td border="1">part_start</td><td border="1">600161</td></tr>
+<tr><td border="1">part_size</td><td border="1">1000000</td></tr>
+<tr><td border="1">part_name</td><td border="1">Particion3</td></tr>
+<tr><td border="1" colspan="2">mbr_partition2</td></tr>
+<tr><td border="1">part_status</td><td border="1">1</td></tr>
+<tr><td border="1">part_type</td><td border="1">P</td></tr>
+<tr><td border="1">part_fit</td><td border="1">W</td></tr>
+<tr><td border="1">part_start</td><td border="1">300161</td></tr>
+<tr><td border="1">part_size</td><td border="1">300000</td></tr>
+<tr><td border="1">part_name</td><td border="1">Particion2</td></tr>
+<tr><td border="1" colspan="2">mbr_partition3</td></tr>
+<tr><td border="1">part_status</td><td border="1">1</td></tr>
+<tr><td border="1">part_type</td><td border="1">P</td></tr>
+<tr><td border="1">part_fit</td><td border="1">B</td></tr>
+<tr><td border="1">part_start</td><td border="1">161</td></tr>
+<tr><td border="1">part_size</td><td border="1">300000</td></tr>
+<tr><td border="1">part_name</td><td border="1">Particion4</td></tr>
+<tr><td border="1" colspan="2">mbr_partition4</td></tr>
+<tr><td border="1">part_status</td><td border="1">0</td></tr>
+<tr><td border="1">part_type</td><td border="1">P</td></tr>
+<tr><td border="1">part_fit</td><td border="1">W</td></tr>
+<tr><td border="1">part_start</td><td border="1">161</td></tr>
+<tr><td border="1">part_size</td><td border="1">300000</td></tr>
+<tr><td border="1">part_name</td><td border="1">Particion1</td></tr>
+</table>>]
+PL1[ shape=plaintext label=<
+<table cellpadding="5" cellspacing="0" border="0">
+<tr><td colspan="2" align="left">EBR 1</td></tr>
+<tr><td border="1">Nombre</td><td border="1">Valor</td></tr>
+<tr><td border="1">part_status</td><td border="1">1</td></tr>
+<tr><td border="1">part_fit</td><td border="1">W</td></tr>
+<tr><td border="1">part_start</td><td border="1">600161</td></tr>
+<tr><td border="1">part_size</td><td border="1">100000</td></tr>
+<tr><td border="1">part_next</td><td border="1">700161</td></tr>
+<tr><td border="1">part_name</td><td border="1">PL1</td></tr>
+</table>>]
+PL4[ shape=plaintext label=<
+<table cellpadding="5" cellspacing="0" border="0">
+<tr><td colspan="2" align="left">EBR 2</td></tr>
+<tr><td border="1">Nombre</td><td border="1">Valor</td></tr>
+<tr><td border="1">part_status</td><td border="1">1</td></tr>
+<tr><td border="1">part_fit</td><td border="1">W</td></tr>
+<tr><td border="1">part_start</td><td border="1">700161</td></tr>
+<tr><td border="1">part_size</td><td border="1">40000</td></tr>
+<tr><td border="1">part_next</td><td border="1">800161</td></tr>
+<tr><td border="1">part_name</td><td border="1">PL4</td></tr>
+</table>>]
+PL3[ shape=plaintext label=<
+<table cellpadding="5" cellspacing="0" border="0">
+<tr><td colspan="2" align="left">EBR 3</td></tr>
+<tr><td border="1">Nombre</td><td border="1">Valor</td></tr>
+<tr><td border="1">part_status</td><td border="1">1</td></tr>
+<tr><td border="1">part_fit</td><td border="1">W</td></tr>
+<tr><td border="1">part_start</td><td border="1">800161</td></tr>
+<tr><td border="1">part_size</td><td border="1">100000</td></tr>
+<tr><td border="1">part_next</td><td border="1">900161</td></tr>
+<tr><td border="1">part_name</td><td border="1">PL3</td></tr>
+</table>>]
+PL5[ shape=plaintext label=<
+<table cellpadding="5" cellspacing="0" border="0">
+<tr><td colspan="2" align="left">EBR 4</td></tr>
+<tr><td border="1">Nombre</td><td border="1">Valor</td></tr>
+<tr><td border="1">part_status</td><td border="1">1</td></tr>
+<tr><td border="1">part_fit</td><td border="1">W</td></tr>
+<tr><td border="1">part_start</td><td border="1">900161</td></tr>
+<tr><td border="1">part_size</td><td border="1">550000</td></tr>
+<tr><td border="1">part_next</td><td border="1">-1</td></tr>
+<tr><td border="1">part_name</td><td border="1">PL5</td></tr>
+</table>>]
+}

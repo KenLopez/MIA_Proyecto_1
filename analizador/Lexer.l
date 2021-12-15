@@ -36,6 +36,7 @@ CADENA      ({COMILLA}{RUTA}{COMILLA})
 "exec"          {return EXEC;}
 "mount"         {return MOUNT;}
 "unmount"       {return UMOUNT;}
+"rep"           {return REP;}
 
 "="             {return IGUAL;}
 "~:~"           {return SEPARATOR;}
@@ -46,10 +47,10 @@ CADENA      ({COMILLA}{RUTA}{COMILLA})
 {GUION}"delete"        {return DELET;}
 {GUION}"name"          {return NAME;}
 {GUION}"add"           {return ADD;}
-{GUION}"rep"           {return REP;}
 {GUION}"unit"          {return UNIT;}
 {GUION}"fit"           {return FIT;}
 {GUION}"id"            {return PID;}
+{GUION}"ruta"          {return ROOT;}
 
 "mbr"           {return MBR;}
 "disk"          {return DISK;}

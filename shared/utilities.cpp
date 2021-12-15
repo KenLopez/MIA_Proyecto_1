@@ -1,4 +1,5 @@
 #include "../headers/utilities.h"
+#include "../headers/mount.h"
 
 vector<string> split(string delim, string str){
     int pos;
@@ -46,6 +47,12 @@ string getDIR(string f_path){
 string getName(string f_path){
     vector<string> v = split("/", f_path);
     return v[v.size()-1];
+}
+
+string getNameExt(string f_path){
+    vector<string> v = split("/", f_path);
+    vector<string> v2 = split(".", v[v.size()-1]);
+    return v2[0];
 }
 
 MBR_STRUCT getMBR(FILE* file){
@@ -202,7 +209,7 @@ string getCMD(int argc, char* argv[]){
     return args;
 }
 
-void execCmd(COMMAND* command){
+void execCmd(COMMAND* command, Mount* mount){
     Mkdisk *mkdsk;
     Rmdisk *rmdsk; 
     Fdisk *fdsk; 
@@ -224,9 +231,9 @@ void execCmd(COMMAND* command){
         fdsk->execute(command->parameters);
         break;
     case cREP:
-        /*rep = new Rep();
-        rep->execute(command.parameters);*/
-        cout<<"REP"<<endl;
+        rep = new Rep();
+        rep->mount = mount;
+        rep->execute(command->parameters);
         break;
     case cEXEC:
         exec = new Exec();
@@ -237,9 +244,31 @@ void execCmd(COMMAND* command){
         getchar();
         cout<<endl;
         break;
+    case cMOUNT:
+        mount->mountNew(command->parameters);
+        break;
+    case cUMOUNT:
+        mount->unmount(command->parameters);
+        break;
     default:
         break;
     }
+}
+
+string intToString(int num){
+    std::stringstream ss;
+    string str;
+    ss<<num;
+    ss>>str;
+    return str;
+}
+
+string charToString(char ch){
+    std::stringstream ss;
+    string str;
+    ss<<ch;
+    ss>>str;
+    return str;
 }
 
 COMMAND* parse(string cmd)
