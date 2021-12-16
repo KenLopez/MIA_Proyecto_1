@@ -10,7 +10,6 @@ int main(int argc, char* argv[])
         cout<<"ERROR: No se introdujo ningún comando."<<endl;
         return 0;
     }
-
     string args = getCMD(argc, argv);
     COMMAND* command;
     Mount mount;

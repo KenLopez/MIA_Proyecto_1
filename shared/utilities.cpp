@@ -284,6 +284,34 @@ string charToString(char ch){
     return str;
 }
 
+string floatToString(float num){
+    std::stringstream ss;
+    string str;
+    ss<<num;
+    ss>>str;
+    return str;
+}
+
+PART_STRUCT* getNextPrimary(vector<PART_STRUCT*> primaries, int pos){
+    int i;
+    PART_STRUCT* next = NULL;
+    for ( i = 0; i < primaries.size(); i++)
+    {
+        if(primaries[i]->part_status){
+            if(next == NULL){
+                if(primaries[i]->part_start>=pos){
+                    next = primaries[i];
+                }
+            }else{
+                if(next->part_start>primaries[i]->part_start && primaries[i]->part_start>=pos){
+                    next = primaries[i];
+                }
+            }
+        }
+    }
+    return next;
+}
+
 COMMAND* parse(string cmd)
 {   
     COMMAND* command = new COMMAND();
@@ -297,3 +325,51 @@ COMMAND* parse(string cmd)
     }
     return command;
 }
+
+string dotFreeSpace(int ini, int end, int size){
+    return "\n|ESPACIO LIBRE\\nInicio: "+intToString(ini)+"\\nFinal: "+intToString(end)+"\\nPorcentaje: "+floatToString(((float)(end-ini))/((float)size)*((float)100))+"%";
+}
+
+string dotPrimary(PART_STRUCT* part,  int size, vector<EBR_STRUCT>logics){
+    int i;
+    int pos = part->part_start;
+    string str;
+    string type;
+    str+= "\\n"+string(part->part_name)+"\\nInicio: "+intToString(part->part_start)+"\\nFinal: "+intToString(part->part_start+part->part_size);
+    if(part->part_type == 'E'){
+        str = "\n|{\nEXTENDIDA"+str;
+        str += "\n|{\n";
+        if(logics.size()==0){
+            str+=dotFreeSpace(part->part_start, part->part_start+part->part_size, size);
+        }
+        for ( i = 0; i < logics.size(); i++)
+        {
+            if(logics[i].part_start > pos+1){
+                str+=dotFreeSpace(pos+1, logics[i].part_start-1, size);
+            }
+            if(i!=0){
+                str+="\n|";
+            }else{
+                str+="\n";
+            }
+            str+="EBR\\nInicio: "+intToString(logics[i].part_start)+"\\n"+"Final: "+intToString(logics[i].part_start+sizeof(EBR_STRUCT));
+            str+="\\nPorcentaje: "+floatToString(((float)sizeof(EBR_STRUCT))/((float)size)*((float)100))+"%";
+            str+=dotLogic(&(logics[i]), size);
+            pos = logics[i].part_start+logics[i].part_size;
+        }
+        if(pos<(part->part_start+part->part_size)){
+            str+=dotFreeSpace(pos, part->part_start+part->part_size, size);
+        }
+        str+="\n}\n}";
+    }else{
+        str = "\n|PRIMARIA"+str+"\\nPorcentaje: "+floatToString(((float)part->part_size)/((float)size)*((float)100))+"%";
+    }
+    return str;
+}
+
+string dotLogic(EBR_STRUCT* part, int size){
+    string str = "\n|LOGICA\\n"+string(part->part_name)+"\\nInicio: "+intToString(part->part_start+sizeof(EBR_STRUCT)+1)+"\\nFinal: ";
+    str += intToString(part->part_start+part->part_size)+"\\nPorcentaje: "+floatToString(((float)part->part_size)/((float)size)*((float)100))+"%";
+    return str;
+}
+

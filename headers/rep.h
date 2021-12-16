@@ -25,6 +25,6 @@ public:
     Rep();
     void execute(vector<PARAMETER*>* params);
     void createMBR(FILE* file);
-    
+    void createDisk(FILE* file);
 };
 #endif

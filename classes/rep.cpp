@@ -77,7 +77,9 @@ void Rep::execute(vector<PARAMETER*>* params){
         case tMBR:
             createMBR(file);
             break;
-
+        case tDISK:
+            createDisk(file);
+            break;
         default:
             break;
         }
@@ -85,6 +87,51 @@ void Rep::execute(vector<PARAMETER*>* params){
         cout << "ERROR REP: El disco "<<getName(disk)<<" no fue encontrado en la ruta "<<disk<<"."<<endl;
         return;
     }
+}
+
+void Rep::createDisk(FILE* file){
+    int i, pos;
+    MBR_STRUCT mbr = getMBR(file);
+    vector<PART_STRUCT*> primaries = getPrimaries(&mbr);
+    PART_STRUCT* primary = getNextPrimary(primaries, sizeof(MBR_STRUCT));
+    PART_STRUCT* ext = getExtended(&mbr);
+    vector<EBR_STRUCT>logics;
+    if(ext){
+        logics = getLogics(file, ext->part_start);
+    }
+    string dot;
+    dot += "digraph G{\nnode [shape=record];\nnode1 [label = \"{\n{";
+    dot += "\nMBR\\nInicio: "+intToString(0)+"\\n"+"Final: "+intToString(sizeof(MBR_STRUCT))+"\\nPorcentaje: "+floatToString(((float)sizeof(MBR_STRUCT))/((float)mbr.mbr_tamano)*((float)100))+"%";
+    pos = sizeof(MBR_STRUCT);
+    for ( i = 0; i < primaries.size(); i++)
+    {
+        primary = getNextPrimary(primaries, primary->part_start+primary->part_size);
+        if(primary==NULL){
+            dot += dotFreeSpace(pos+1, mbr.mbr_tamano, mbr.mbr_tamano);
+            break;
+        }else if(primary->part_start>pos+1){
+            dot += dotFreeSpace(pos+1, primary->part_start-1, mbr.mbr_tamano);
+        }
+        dot += dotPrimary(primary, mbr.mbr_tamano, logics);
+        pos = primary->part_start+primary->part_size;
+    }
+    if(primary!=NULL && i==primaries.size()-1){
+        dot+= dotFreeSpace(pos, mbr.mbr_tamano, mbr.mbr_tamano);
+    }
+    dot += "\n}\n}\"]\n}";
+    fclose(file);
+    string name = getNameExt(path);
+    string ruta = "../reporte_Disk_"+name+".dot";
+    string output = getDIR(path)+"/"+name;
+    if(FILE *file2 = fopen(ruta.c_str(), "w")){
+        fputs(dot.c_str(), file2);
+        fclose(file2);
+    }
+    createDirs(getDIR(path).c_str());
+    std::string syst = "dot -Tsvg "+ruta+" -o \"" + output + ".svg\"";
+    cout<<syst<<endl;
+    system(syst.c_str());
+    cout<<"Se creo el reporte: "<<getName(output)<<" correctamente."<<endl;
 }
 
 void Rep::createMBR(FILE* file){
@@ -118,6 +165,9 @@ void Rep::createMBR(FILE* file){
         logics = getLogics(file, ext->part_start);
         for ( i = 0; i < logics.size(); i++)
         {
+            if(!logics[i].part_status){
+                continue;
+            }
             dot += string(logics[i].part_name)+"[ shape=plaintext label=<\n<table cellpadding=\"5\" cellspacing=\"0\" border=\"0\">\n";
             dot += "<tr><td colspan=\"2\" align=\"left\">EBR "+intToString(i+1)+"</td></tr>\n<tr><td border=\"1\">Nombre</td><td border=\"1\">Valor</td></tr>\n";
             dot += "<tr><td border=\"1\">part_status</td><td border=\"1\">"+intToString(logics[i].part_status)+"</td></tr>\n";
@@ -130,14 +180,17 @@ void Rep::createMBR(FILE* file){
         }
     }
     dot += "}";
-    string ruta = "../reporte.dot";
-    string output = getDIR(path)+"/"+getNameExt(path);
-    if(FILE *file = fopen(ruta.c_str(), "w")){
-        fputs(dot.c_str(), file);
+    fclose(file);
+    string name = getNameExt(path);
+    string ruta = "../reporte_MBR_"+name+".dot";
+    string output = getDIR(path)+"/"+name;
+    if(FILE *file2 = fopen(ruta.c_str(), "w")){
+        fputs(dot.c_str(), file2);
+        fclose(file2);
     }
     createDirs(getDIR(path).c_str());
-    std::string syst = "dot -Tsvg ../reporte.dot -o \"" + output + ".svg\"";
+    std::string syst = "dot -Tsvg "+ruta+" -o \"" + output + ".svg\"";
     cout<<syst<<endl;
     system(syst.c_str());
-    cout<<"Se creo el reporte: "<<getName(path)<<" correctamente."<<endl;
+    cout<<"Se creo el reporte: "<<getName(output)<<" correctamente."<<endl;
 }

@@ -62,5 +62,14 @@ string getNameExt(string f_path);
 
 void createDirs(string dirs);
 
+string floatToString(float num);
+
+PART_STRUCT* getNextPrimary(vector<PART_STRUCT*> primaries, int pos);
+
+string dotLogic(EBR_STRUCT* part, int size);
+
+string dotPrimary(PART_STRUCT* part,  int size, vector<EBR_STRUCT>logics);
+
+string dotFreeSpace(int ini, int end, int size);
 
 #endif
