@@ -320,7 +320,7 @@ COMMAND* parse(string cmd)
 
     YY_BUFFER_STATE state = yy_scan_string(entrada);
     if (yyparse(command) || !command->name) {
-        cout<<"\033[92mERROR: El comando: "<<cmd<<", no pudo ser ejecutado.\033[0m"<<endl;
+        cout<<"\033[91mERROR: El comando: "<<cmd<<", no pudo ser ejecutado.\033[0m"<<endl;
         return NULL;
     }
     return command;

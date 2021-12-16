@@ -50,6 +50,8 @@ void Exec::execute(vector<PARAMETER*>* params){
             if(command!=NULL){
                 if(command->name == cCOMMENT){
                     cout<<"\033[95m";
+                }else if(command->name == cPAUSE){
+                    cout<<"\033[93m";
                 }else{
                     cout<<"\033[96m";
                 }
