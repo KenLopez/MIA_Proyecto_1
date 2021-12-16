@@ -253,9 +253,9 @@ void execCmd(COMMAND* command, Mount* mount){
         exec->execute(command->parameters);
         break;
     case cPAUSE:
-        cout<<"Ejecución detenida. Presione cualquier tecla para continuar...";
+        cout<<"\033[93mEjecución detenida. Presione cualquier tecla para continuar...";
         getchar();
-        cout<<endl;
+        cout<<"\033[0m"<<endl;
         break;
     case cMOUNT:
         mount->mountNew(command->parameters);
@@ -320,7 +320,7 @@ COMMAND* parse(string cmd)
 
     YY_BUFFER_STATE state = yy_scan_string(entrada);
     if (yyparse(command) || !command->name) {
-        cout<<"ERROR: El comando: "<<cmd<<", no pudo ser ejecutado."<<endl;
+        cout<<"\033[92mERROR: El comando: "<<cmd<<", no pudo ser ejecutado.\033[0m"<<endl;
         return NULL;
     }
     return command;

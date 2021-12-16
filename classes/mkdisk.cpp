@@ -32,7 +32,7 @@ void Mkdisk::writeDisk(FILE* file){
     rewind(file);
     fwrite(&newDisk, sizeof(MBR_STRUCT), 1, file);
     fclose(file);
-    cout<<"Disco "<<path<<", creado exitosamente."<<endl;
+    cout<<"\033[92mDisco "<<path<<", creado exitosamente.\033[0m"<<endl;
 }
 
 void Mkdisk::execute(vector<PARAMETER*>* params){
@@ -43,48 +43,48 @@ void Mkdisk::execute(vector<PARAMETER*>* params){
         p = (*params)[i];
         if(p->name == pPATH){
             if(path!=""){
-                cout<<"ERROR MKDISK: Parámetro path ya fue definido."<<endl;
+                cout<<"\033[91mERROR MKDISK: Parámetro path ya fue definido.\033[0m"<<endl;
                 return;
             }else if(p->text==""){
-                cout<<"ERROR MKDISK: Ruta no válida."<<endl;
+                cout<<"\033[91mERROR MKDISK: Ruta no válida.\033[0m"<<endl;
                 return;
             }
             path = p->text;
         }else if(p->name == pSIZE){
             if(size>0){
-                cout<<"ERROR MKDISK: Parámetro size ya fue definido."<<endl;
+                cout<<"\033[91mERROR MKDISK: Parámetro size ya fue definido.\033[0m"<<endl;
                 return;
             }else if(p->value==0){
-                cout<<"ERROR MKDISK: El tamanio de disco debe ser mayor a 0."<<endl;
+                cout<<"\033[91mERROR MKDISK: El tamanio de disco debe ser mayor a 0.\033[0m"<<endl;
                 return;
             }
             size = p->value;
         }else if(p->name == pUNIT){
             if(unit!=tNONE){
-                cout<<"ERROR MKDISK: Parámetro unit ya fue definido."<<endl;
+                cout<<"\033[91mERROR MKDISK: Parámetro unit ya fue definido.\033[0m"<<endl;
                 return;
             }
             unit = p->param;
         }else if(p->name == pFIT){
             if(fit!=tNONE){
-                cout<<"ERROR MKDISK: Parámetro fit ya fue definido."<<endl;
+                cout<<"\033[91mERROR MKDISK: Parámetro fit ya fue definido.\033[0m"<<endl;
                 return;
             }
             fit = p->param;
         }else{
-            cout<<"ERROR MKDISK: Comando mkdisk posee parámetros incorrectos."<<endl;
+            cout<<"\033[91mERROR MKDISK: Comando mkdisk posee parámetros incorrectos.\033[0m"<<endl;
             return;
         }
     }
     if(path=="" || size<1){
-        cout<<"ERROR MKDISK: Comando mkdisk no posee parámetros obligatorios (size, path)."<<endl;
+        cout<<"\033[91mERROR MKDISK: Comando mkdisk no posee parámetros obligatorios (size, path).\033[0m"<<endl;
         return;
     }
     if(fit == tNONE){ fit = tFF; }
     if(unit == tNONE){ unit = tMB; }
     size = convertBytes(size, unit);
     if(FILE *file = fopen(path.c_str(), "r")){
-        cout << "ERROR MKDISK: El disco "<<getName(path)<<" ya existe en "<<path<<"."<<endl; 
+        cout << "\033[91mERROR MKDISK: El disco "<<getName(path)<<" ya existe en "<<path<<".\033[0m"<<endl; 
         fclose(file);
         return;
     }else { 
@@ -93,7 +93,7 @@ void Mkdisk::execute(vector<PARAMETER*>* params){
             writeDisk(file);
             return;
         }else{
-            cout<<"ERROR MKDISK: No se pudo crear el disco."<<endl;
+            cout<<"\033[91mERROR MKDISK: No se pudo crear el disco.\033[0m"<<endl;
             return; 
         }
     }

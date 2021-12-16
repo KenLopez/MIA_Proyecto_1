@@ -16,10 +16,10 @@ void Rep::execute(vector<PARAMETER*>* params){
         {
         case pPATH:
             if(path!=""){
-                cout<<"ERROR REP: Parámetro path ya fue definido."<<endl;
+                cout<<"\033[91mERROR REP: Parámetro path ya fue definido.\033[0m"<<endl;
                 return;
             }else if(p->text==""){
-                cout<<"ERROR REP: Ruta no válida."<<endl;
+                cout<<"\033[91mERROR REP: Ruta no válida.\033[0m"<<endl;
                 return;
             }
             path = p->text;
@@ -27,10 +27,10 @@ void Rep::execute(vector<PARAMETER*>* params){
         
         case pNAME:
             if(name!=tNONE){
-                cout<<"ERROR REP: Parámetro name ya fue definido."<<endl;
+                cout<<"\033[91mERROR REP: Parámetro name ya fue definido.\033[0m"<<endl;
                 return;
             }else if(p->param==tNONE){
-                cout<<"ERROR REP: Nombre no válido."<<endl;
+                cout<<"\033[91mERROR REP: Nombre no válido.\033[0m"<<endl;
                 return;
             }
             name = p->param;
@@ -38,7 +38,7 @@ void Rep::execute(vector<PARAMETER*>* params){
 
         case pID:
             if(id!=""){
-                cout<<"ERROR REP: Parámetro id ya fue definido."<<endl;
+                cout<<"\033[91mERROR REP: Parámetro id ya fue definido.\033[0m"<<endl;
                 return;
             }
             id = p->text;
@@ -46,12 +46,12 @@ void Rep::execute(vector<PARAMETER*>* params){
         case pRUTA:
             break;
         default:
-            cout<<"ERROR REP: Comando rep posee parámetros incorrectos."<<endl;
+            cout<<"\033[91mERROR REP: Comando rep posee parámetros incorrectos.\033[0m"<<endl;
             return;
         }
     }
     if(path=="" || name==tNONE || id==""){
-        cout<<"ERROR REP: Comando rep no posee parámetros obligatorios (path, id, name)."<<endl;
+        cout<<"\033[91mERROR REP: Comando rep no posee parámetros obligatorios (path, id, name).\033[0m"<<endl;
         return;
     }
     for ( i = 0; i < mount->mounted.size(); i++)
@@ -67,7 +67,7 @@ void Rep::execute(vector<PARAMETER*>* params){
         }   
     }
     if(partition == NULL){
-        cout << "ERROR REP: La partición "<<id<<" no ha sido montada."<<endl;
+        cout << "\033[91mERROR REP: La partición "<<id<<" no ha sido montada.\033[0m"<<endl;
         return;
     }
     FILE* file;
@@ -84,7 +84,7 @@ void Rep::execute(vector<PARAMETER*>* params){
             break;
         }
     }else{
-        cout << "ERROR REP: El disco "<<getName(disk)<<" no fue encontrado en la ruta "<<disk<<"."<<endl;
+        cout << "\033[91mERROR REP: El disco "<<getName(disk)<<" no fue encontrado en la ruta "<<disk<<".\033[0m"<<endl;
         return;
     }
 }
@@ -129,9 +129,9 @@ void Rep::createDisk(FILE* file){
     }
     createDirs(getDIR(path).c_str());
     std::string syst = "dot -Tsvg "+ruta+" -o \"" + output + ".svg\"";
-    cout<<syst<<endl;
+    cout<<"\033[93m"<<syst<<"\033[0m"<<endl;
     system(syst.c_str());
-    cout<<"Se creo el reporte: "<<getName(output)<<" correctamente."<<endl;
+    cout<<"\033[92mSe creo el reporte: "<<getName(output)<<" correctamente.\033[0m"<<endl;
 }
 
 void Rep::createMBR(FILE* file){
@@ -190,7 +190,7 @@ void Rep::createMBR(FILE* file){
     }
     createDirs(getDIR(path).c_str());
     std::string syst = "dot -Tsvg "+ruta+" -o \"" + output + ".svg\"";
-    cout<<syst<<endl;
+    cout<<"\033[93m"<<syst<<"\033[0m"<<endl;
     system(syst.c_str());
-    cout<<"Se creo el reporte: "<<getName(output)<<" correctamente."<<endl;
+    cout<<"\033[92mSe creo el reporte: "<<getName(output)<<" correctamente.\033[0m"<<endl;
 }

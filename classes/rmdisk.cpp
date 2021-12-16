@@ -16,30 +16,30 @@ void Rmdisk::execute(vector<PARAMETER*>* params){
         p = (*params)[i];
         if(p->name == pPATH){
             if(path!=""){
-                cout<<"ERROR RMDISK: Parámetro path ya fue definido."<<endl;
+                cout<<"\033[91mERROR RMDISK: Parámetro path ya fue definido.\033[0m"<<endl;
                 return;
             }else if(p->text==""){
-                cout<<"ERROR RMDISK: Ruta no válida."<<endl;
+                cout<<"\033[91mERROR RMDISK: Ruta no válida.\033[0m"<<endl;
                 return;
             }
             path = p->text;
         }else{
-            cout<<"ERROR RMDISK: Comando mkdisk posee parámetros incorrectos."<<endl;
+            cout<<"\033[91mERROR RMDISK: Comando mkdisk posee parámetros incorrectos.\033[0m"<<endl;
             return;
         }
     }
     if(path==""){
-        cout<<"ERROR RMDISK: Comando mkdisk no posee parámetros obligatorios (path)."<<endl;
+        cout<<"\033[91mERROR RMDISK: Comando mkdisk no posee parámetros obligatorios (path).\033[0m"<<endl;
         return;
     }
     if(FILE *file = fopen(path.c_str(), "r")){ 
         fclose(file);
         if(remove(path.c_str())!=0){
-            cout << "ERROR RMDISK: El disco "<<path<<" no pudo ser eliminado en la ruta "<<path<<"."<<endl;    
+            cout << "\033[91mERROR RMDISK: El disco "<<path<<" no pudo ser eliminado en la ruta "<<path<<".\033[0m"<<endl;    
         }else{
-            cout << "El disco: "<<path<<", fue eliminado exitosamente."<<endl;
+            cout << "\033[92mEl disco: "<<path<<", fue eliminado exitosamente.\033[0m"<<endl;
         }
     }else { 
-        cout << "ERROR RMDISK: El disco "<<getName(path)<<" no fue encontrado en la ruta "<<path<<"."<<endl;
+        cout << "\033[91mERROR RMDISK: El disco "<<getName(path)<<" no fue encontrado en la ruta "<<path<<".\033[0m"<<endl;
     }
 }

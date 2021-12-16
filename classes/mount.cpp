@@ -14,20 +14,20 @@ void Mount::unmount(vector<PARAMETER*>* params){
         p = (*params)[i];
         if(p->name == pID){
             if(id!=""){
-                cout<<"ERROR UNMOUNT: Parámetro id ya fue definido."<<endl;
+                cout<<"\033[91mERROR UNMOUNT: Parámetro id ya fue definido.\033[0m"<<endl;
                 return;
             }else if(p->text==""){
-                cout<<"ERROR UNMOUNT: Id no válido."<<endl;
+                cout<<"\033[91mERROR UNMOUNT: Id no válido.\033[0m"<<endl;
                 return;
             }
             id = p->text;
         }else{
-            cout<<"ERROR UNMOUNT: Comando unmount posee parámetros incorrectos."<<endl;
+            cout<<"\033[91mERROR UNMOUNT: Comando unmount posee parámetros incorrectos.\033[0m"<<endl;
             return;
         }
     }
     if(id==""){
-        cout<<"ERROR UNMOUNT: Comando unmount no posee parámetros obligatorios (id)."<<endl;
+        cout<<"\033[91mERROR UNMOUNT: Comando unmount no posee parámetros obligatorios (id).\033[0m"<<endl;
         return;
     }
     for ( i = 0; i < mounted.size(); i++)
@@ -39,13 +39,13 @@ void Mount::unmount(vector<PARAMETER*>* params){
                 if(!countActives(&(mounted[i]))){
                     mounted[i].status = 0;
                 }
-                cout<<"La partición "<<id<<" ha sido desmontada exitosamente."<<endl;
+                cout<<"\033[92mLa partición "<<id<<" ha sido desmontada exitosamente.\033[0m"<<endl;
                 return;
             }
         }
         
     }
-    cout << "ERROR UNMOUNT: No se pudo desmontar la partición "<<id<<", no se encuentra montada."<<endl;
+    cout << "\033[91mERROR UNMOUNT: No se pudo desmontar la partición "<<id<<", no se encuentra montada.\033[0m"<<endl;
     return;
 }
 
@@ -81,29 +81,29 @@ void Mount::mountNew(vector<PARAMETER*>* params){
         p = (*params)[i];
         if(p->name == pPATH){
             if(path!=""){
-                cout<<"ERROR MOUNT: Parámetro path ya fue definido."<<endl;
+                cout<<"\033[91mERROR MOUNT: Parámetro path ya fue definido.\033[0m"<<endl;
                 return;
             }else if(p->text==""){
-                cout<<"ERROR MOUNT: Ruta no válida."<<endl;
+                cout<<"\033[91mERROR MOUNT: Ruta no válida.\033[0m"<<endl;
                 return;
             }
             path = p->text;
         }else if(p->name == pNAME){
             if(name!=""){
-                cout<<"ERROR MOUNT: Parámetro name ya fue definido."<<endl;
+                cout<<"\033[91mERROR MOUNT: Parámetro name ya fue definido.\033[0m"<<endl;
                 return;
             }else if(p->text==""){
-                cout<<"ERROR MOUNT: Nombre de partición no válido."<<endl;
+                cout<<"\033[91mERROR MOUNT: Nombre de partición no válido.\033[0m"<<endl;
                 return;
             }
             name = p->text;
         }else{
-            cout<<"ERROR MOUNT: Comando mount posee parámetros incorrectos."<<endl;
+            cout<<"\033[91mERROR MOUNT: Comando mount posee parámetros incorrectos.\033[0m"<<endl;
             return;
         }
     }
     if(path=="" || name==""){
-        cout<<"ERROR MOUNT: Comando mount no posee parámetros obligatorios (path, name)."<<endl;
+        cout<<"\033[91mERROR MOUNT: Comando mount no posee parámetros obligatorios (path, name).\033[0m"<<endl;
         return;
     }
     if(file = fopen(path.c_str(), "r+")){
@@ -113,7 +113,7 @@ void Mount::mountNew(vector<PARAMETER*>* params){
         {
             if(primaries[i]->part_status && primaries[i]->part_name == name){
                 if(primaries[i]->part_type == 'E'){
-                    cout<<"ERROR MOUNT: No puedes montar una partición extendida."<<endl;
+                    cout<<"\033[91mERROR MOUNT: No puedes montar una partición extendida.\033[0m"<<endl;
                     return;
                 }else{
                     disk_index = findDisk(path);
@@ -145,10 +145,10 @@ void Mount::mountNew(vector<PARAMETER*>* params){
                             new_part.id = mounted[disk_index].mounted[part_index].id;
                             mounted[disk_index].mounted[part_index] = new_part;
                         }
-                        cout<<"La partición "<<name<<"en "<<path<<" ha sido montada exitosamente. (ID: "<<new_part.id<<")"<<endl;
+                        cout<<"\033[92mLa partición "<<name<<"en "<<path<<" ha sido montada exitosamente. (ID: "<<new_part.id<<")\033[0m"<<endl;
                         return;
                     }else{
-                        cout<<"ERROR MOUNT: La partición "<<name<<" en "<<path<<" ya se encuentra montada."<<endl;
+                        cout<<"\033[91mERROR MOUNT: La partición "<<name<<" en "<<path<<" ya se encuentra montada.\033[0m"<<endl;
                         return;
                     }
                 }
@@ -189,19 +189,19 @@ void Mount::mountNew(vector<PARAMETER*>* params){
                             new_part.id = mounted[disk_index].mounted[part_index].id;
                             mounted[disk_index].mounted[part_index] = new_part;
                         }
-                        cout<<"La partición "<<name<<" en "<<path<<" ha sido montada exitosamente. (ID: "<<new_part.id<<")"<<endl;;
+                        cout<<"\033[92mLa partición "<<name<<" en "<<path<<" ha sido montada exitosamente. (ID: "<<new_part.id<<")\033[0m"<<endl;;
                         return;
                     }else{
-                        cout<<"ERROR MOUNT: La partición "<<name<<" en "<<path<<" ya se encuentra montada."<<endl;
+                        cout<<"\033[91mERROR MOUNT: La partición "<<name<<" en "<<path<<" ya se encuentra montada.\033[0m"<<endl;
                         return;
                     }
                 }
             }      
         }
-        cout << "ERROR MOUNT: La partición "<<name<<" no fue encontrada en "<<path<<"."<<endl;;
+        cout << "\033[91mERROR MOUNT: La partición "<<name<<" no fue encontrada en "<<path<<".\033[0m"<<endl;;
         return;
     }else{
-        cout << "ERROR MOUNT: El disco "<<getName(path)<<" no fue encontrado en la ruta "<<path<<"."<<endl;
+        cout << "\033[91mERROR MOUNT: El disco "<<getName(path)<<" no fue encontrado en la ruta "<<path<<".\033[0m"<<endl;
         return;
     }
 }
