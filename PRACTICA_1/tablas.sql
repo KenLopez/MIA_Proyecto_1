@@ -45,7 +45,7 @@ CREATE TABLE locations(
 CREATE TABLE project(
     id int auto_increment not null,
     project_id varchar(50),
-    is_geocoded bit(1),
+    is_geocoded int,
     project_title varchar(100),
     start_actual_isodate date,
     end_actual_isodate date,
@@ -101,7 +101,7 @@ CREATE TABLE transaction(
     project_id int,
     transaction_isodate date,
     transaction_year smallint,
-    transaction_value_code char(1),
+    transaction_value_code varchar(1),
     transaction_currency int,
     transaction_value float,
     primary key(id),

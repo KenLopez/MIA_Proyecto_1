@@ -8,6 +8,7 @@ DROP TABLE IF EXISTS temp_level_1a;
 DROP TABLE IF EXISTS temp_locations;
 DROP TABLE IF EXISTS temp_projects;
 DROP TABLE IF EXISTS temp_transactions;
+
 DROP TABLE IF EXISTS transaction;
 DROP TABLE IF EXISTS currency;
 DROP TABLE IF EXISTS level;

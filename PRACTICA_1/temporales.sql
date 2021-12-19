@@ -4,44 +4,44 @@ CREATE TABLE temp_country_codes(
     name varchar(100),
     iso2 varchar(20),
     name_name varchar(100),
-    name_aiddata_code varchar(50),
+    name_aiddata_code int,
     name_aiddata_name varchar(100),
     name_cow_alpha varchar(20),
-    name_cow_numeric varchar(50),
-    name_fao_code varchar(50),
+    name_cow_numeric smallint,
+    name_fao_code smallint,
     name_fips varchar(20),
-    name_geonames_id varchar(100),
-    name_imf_code varchar(50),
+    name_geonames_id int,
+    name_imf_code smallint,
     name_iso2 varchar(20),
     name_iso3 varchar(20),
-    name_iso_numeric varchar(50),
-    name_oecd_code varchar(50),
+    name_iso_numeric smallint,
+    name_oecd_code smallint,
     name_oecd_name varchar(100),
-    name_un_code varchar(50),
+    name_un_code smallint,
     name_wb_code varchar(20)
 );
 
 CREATE TABLE temp_geonames(
-    geoname_id varchar(100),
+    geoname_id int,
     place_name varchar(50),
-    latitude varchar(50),
-    longitude varchar(50),
-    location_type_code varchar(20),
+    latitude float,
+    longitude float,
+    location_type_code varchar(100),
     location_type_name varchar(100),
     gazetteer_adm_code varchar(100),
     gazetteer_adm_name varchar(100),
-    location_class varchar(50),
-    geografic_exactness varchar(50)
+    location_class smallint,
+    geografic_exactness smallint
 );
 
 CREATE TABLE temp_level_1a(
     project_id varchar(50),
     project_location_id varchar(100),
-    geoname_id varchar(50),
-    transactions_start_year varchar(50),
-    transactions_end_year varchar(50),
-    even_split_commitments varchar(50),
-    even_split_disbursements varchar(50)
+    geoname_id int,
+    transactions_start_year smallint,
+    transactions_end_year smallint,
+    even_split_commitments float,
+    even_split_disbursements float
 );
 
 CREATE TABLE temp_locations(
@@ -51,29 +51,29 @@ CREATE TABLE temp_locations(
 
 CREATE TABLE temp_projects(
     project_id varchar(50),
-    is_geocoded varchar(5),
+    is_geocoded int,
     project_title varchar(100),
     start_actual_isodate varchar(10),
     end_actual_isodate varchar(10),
     donors varchar(50),
     donors_iso3 varchar(20),
-    recipients varchar(50),
+    recipients varchar(100),
     recipients_iso3 varchar(20),
     ad_sector_code varchar(50),
     ad_sector_names varchar(100),
-    status varchar(50),
-    transactions_start_year varchar(50),
-    transactions_end_year varchar(50), 
-    total_commitments varchar(50),
-    total_disbursements varchar(50)
+    status varchar(100),
+    transactions_start_year smallint,
+    transactions_end_year smallint, 
+    total_commitments float,
+    total_disbursements float
 );
 
 CREATE TABLE temp_transactions(
     transactions_id varchar(50),
-    project_id varchar(20),
+    project_id varchar(50),
     transaction_isodate varchar(10),
-    transaction_year varchar(50),
-    transaction_value_code varchar(5),
-    transaction_currency varchar(10),
-    transaction_value varchar(50)
+    transaction_year smallint,
+    transaction_value_code varchar(1),
+    transaction_currency varchar(100),
+    transaction_value float
 );
