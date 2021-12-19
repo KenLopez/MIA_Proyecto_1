@@ -40,22 +40,7 @@ SELECT
     transaction.id,
     transactions_id,
     transaction.project_id,
-    (select project_title from project where project_id = transaction.project_id),
-    transaction_isodate,
-    transaction_year,
-    transaction_value_code,
-    (select name from currency where currency.id = transaction.transaction_currency),
-    transaction_value
-FROM
-    transaction,
-    currency,
-    project;
-
-SELECT
-    transaction.id,
-    transactions_id,
-    transaction.project_id,
-    project.project_title
+    project.project_title,
     transaction_isodate,
     transaction_year,
     transaction_value_code,
@@ -64,7 +49,7 @@ SELECT
 FROM
     transaction,
     currency,
-    project;
+    project
 WHERE
     transaction.project_id = project.id
     AND project.project_title like "%RI-East Africa Public Health Laboratory Networking Project%"
