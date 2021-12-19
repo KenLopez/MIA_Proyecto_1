@@ -19,5 +19,3 @@ echo "~Cargando datos de country_codes.tsv..."
 mysql --local-infile=1 -u admin -p < country_codes_control.sql
 echo "~Cargando datos de temporales..."
 mysql -u admin -p < insert.sql
-echo "~Realizando consultas..."
-mysql -u admin -p < queries.sql
